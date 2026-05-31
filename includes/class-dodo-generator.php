@@ -209,10 +209,28 @@ class DODO_Generator {
             }
             
             // 4.5. AI Answer Blocks ekle (Sprint 5 - Phase 2)
+            // FORM OVERRIDE: params'dan gelen ayarlar settings'den üstün
             $block_settings = $this->answer_block_engine->get_block_settings();
+            
+            // Override with form params if provided
+            if (isset($validated_params['answer_blocks_enabled'])) {
+                $block_settings['enabled'] = $validated_params['answer_blocks_enabled'];
+                error_log('DODO: Answer Blocks enabled overridden by form: ' . ($block_settings['enabled'] ? 'YES' : 'NO'));
+            }
+            if (isset($validated_params['block_short_answer'])) {
+                $block_settings['short_answer'] = $validated_params['block_short_answer'];
+                error_log('DODO: Short Answer overridden by form: ' . ($block_settings['short_answer'] ? 'YES' : 'NO'));
+            }
+            if (isset($validated_params['block_faq'])) {
+                $block_settings['faq'] = $validated_params['block_faq'];
+                error_log('DODO: FAQ Block overridden by form: ' . ($block_settings['faq'] ? 'YES' : 'NO'));
+            }
+            
             if ($block_settings['enabled']) {
                 error_log('DODO: AI Answer Blocks oluşturuluyor...');
-                $generated_content = $this->add_answer_blocks($generated_content, $validated_params);
+                $generated_content = $this->add_answer_blocks($generated_content, $validated_params, $block_settings);
+            } else {
+                error_log('DODO: AI Answer Blocks disabled (form or settings)');
             }
             
             // 5. İçeriği hazırla
@@ -1375,11 +1393,44 @@ class DODO_Generator {
             $feature_name = 'main_section_' . $section_number;
             
             // Prepare section_data for prompt builder
-            $section_data = array_merge($section, array(
+            // NORMALIZE ARRAYS - Prevent "Array to string conversion"
+            $normalized_h3_list = array();
+            if (isset($section['h3_list']) && is_array($section['h3_list'])) {
+                foreach ($section['h3_list'] as $h3) {
+                    $normalized_h3_list[] = is_array($h3) ? implode(' ', $h3) : (string)$h3;
+                }
+            }
+            
+            $normalized_key_points = array();
+            if (isset($section['key_points']) && is_array($section['key_points'])) {
+                foreach ($section['key_points'] as $point) {
+                    $normalized_key_points[] = is_array($point) ? implode(' ', $point) : (string)$point;
+                }
+            }
+            
+            $normalized_entities = array();
+            if (isset($section['entities']) && is_array($section['entities'])) {
+                foreach ($section['entities'] as $entity) {
+                    $normalized_entities[] = is_array($entity) ? implode(' ', $entity) : (string)$entity;
+                }
+            }
+            
+            // Fallback for missing H2
+            $h2_title = isset($section['h2']) && !empty($section['h2']) 
+                ? (is_array($section['h2']) ? implode(' ', $section['h2']) : (string)$section['h2'])
+                : "Bölüm " . ($index + 1);
+            
+            $section_data = array(
+                'h2' => $h2_title,
+                'h3_list' => $normalized_h3_list,
+                'key_points' => $normalized_key_points,
+                'entities' => $normalized_entities,
                 'index' => $index,
                 'total_sections' => $total_sections,
                 'params' => $params,
-            ));
+            );
+            
+            error_log("[STRATEGY] Section prompt built - H2: {$h2_title}");
             
             // USE STRATEGY OBJECT - Build section prompt with strategy
             $system_prompt = $this->prompt_builder->build_section_prompt_with_strategy(
@@ -1388,8 +1439,8 @@ class DODO_Generator {
                 $internal_links_text
             );
             
-            $user_prompt = "Ana Başlık (H2): {$section['h2']}\n";
-            $user_prompt .= "Alt Başlıklar (H3): " . implode(', ', $section['h3_list']) . "\n";
+            $user_prompt = "Ana Başlık (H2): {$h2_title}\n";
+            $user_prompt .= "Alt Başlıklar (H3): " . implode(', ', $normalized_h3_list) . "\n";
             $user_prompt .= "Odak Anahtar Kelime: {$params['focus_keyword']}\n";
             
             // Topic opsiyonel
@@ -1410,7 +1461,7 @@ class DODO_Generator {
             $user_prompt .= "- Bu bölüm için: Detaylı ve kapsamlı yaz\n";
             $user_prompt .= "- Kısa yazma, her alt başlık altında yeterli açıklama yap\n\n";
             $user_prompt .= "Kurallar:\n";
-            $user_prompt .= "- H2 başlığı ile başla: ## {$section['h2']}\n";
+            $user_prompt .= "- H2 başlığı ile başla: ## {$h2_title}\n";
             $user_prompt .= "- Her H3 alt başlığını kullan: ### [Alt Başlık]\n";
             $user_prompt .= "- Markdown formatında yaz\n";
             $user_prompt .= "- Liste, kalın yazı, vurgular kullan\n";
@@ -1430,13 +1481,13 @@ class DODO_Generator {
                 // Section başarısız - kaydet ve devam et
                 $failed_sections[] = array(
                     'section_number' => $section_number,
-                    'h2' => $section['h2'],
+                    'h2' => $h2_title,
                     'error' => $response->get_error_message(),
                 );
                 error_log("DODO: Section {$section_number} başarısız: " . $response->get_error_message());
                 
                 // Placeholder ekle
-                $generated_sections[$section_number] = "## {$section['h2']}\n\n[Bu bölüm oluşturulamadı. Lütfen tekrar deneyin.]\n\n";
+                $generated_sections[$section_number] = "## {$h2_title}\n\n[Bu bölüm oluşturulamadı. Lütfen tekrar deneyin.]\n\n";
             } else {
                 // Section başarılı
                 $generated_sections[$section_number] = trim($response);
@@ -1883,7 +1934,7 @@ class DODO_Generator {
      * @param array $params Generation parameters
      * @return array Content with answer blocks (or original content if failed)
      */
-    private function add_answer_blocks($generated_content, $params) {
+    private function add_answer_blocks($generated_content, $params, $block_settings = null) {
         try {
             // Safe extraction with fallbacks
             $title = $generated_content['title'] 
@@ -1912,12 +1963,14 @@ class DODO_Generator {
                 return $generated_content;
             }
             
-            // Get block settings
-            $block_settings = $this->answer_block_engine->get_block_settings();
+            // Use provided block_settings or get from engine
+            if ($block_settings === null) {
+                $block_settings = $this->answer_block_engine->get_block_settings();
+            }
             
             // Check if blocks are enabled
             if (!$block_settings['enabled']) {
-                error_log('[DODO Answer Blocks] Answer blocks disabled in settings');
+                error_log('[DODO Answer Blocks] Answer blocks disabled');
                 return $generated_content;
             }
             

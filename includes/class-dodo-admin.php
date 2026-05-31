@@ -36,39 +36,13 @@ class DODO_Admin {
     
     /**
      * Check and run database migrations if needed
-     * CRITICAL: Force repair on every admin load until fixed
      */
     public function check_database_migration() {
         if (!class_exists('DODO_Database_Migrator')) {
             return;
         }
         
-        // CRITICAL FIX: Check metadata column existence directly
-        global $wpdb;
-        $table_name = $wpdb->prefix . 'dodo_performance_cache';
-        
-        // Check if table exists
-        $table_exists = $wpdb->get_var("SHOW TABLES LIKE '{$table_name}'") === $table_name;
-        
-        if ($table_exists) {
-            // Check if metadata column exists
-            $columns = $wpdb->get_col("DESCRIBE {$table_name}", 0);
-            
-            if (!in_array('metadata', $columns)) {
-                error_log('[DODO Admin] CRITICAL: metadata column missing - forcing repair');
-                
-                // Force add metadata column
-                $result = $wpdb->query("ALTER TABLE {$table_name} ADD COLUMN metadata LONGTEXT NULL AFTER cache_value");
-                
-                if ($result !== false) {
-                    error_log('[DODO MIGRATION] ✓ Added metadata column to dodo_performance_cache');
-                } else {
-                    error_log('[DODO MIGRATION] ✗ Failed to add metadata column: ' . $wpdb->last_error);
-                }
-            }
-        }
-        
-        // Run full migration if needed
+        // Run migration if needed
         if (DODO_Database_Migrator::needs_migration()) {
             error_log('[DODO Admin] Database migration needed - running automatically');
             DODO_Database_Migrator::run();
@@ -930,12 +904,31 @@ class DODO_Admin {
             $scheduled_time = isset($_POST['scheduled_time']) ? sanitize_text_field(wp_unslash($_POST['scheduled_time'])) : '';
             
             // Advanced Generation Controls (Sprint 3 - Task 6)
-            $content_intent = isset($_POST['content_intent']) ? sanitize_text_field(wp_unslash($_POST['content_intent'])) : 'informational';
-            $expertise_depth = isset($_POST['expertise_depth']) ? sanitize_text_field(wp_unslash($_POST['expertise_depth'])) : 'intermediate';
-            $geo_optimization = isset($_POST['geo_optimization']) ? sanitize_text_field(wp_unslash($_POST['geo_optimization'])) : 'moderate';
-            $ai_naturalness = isset($_POST['ai_naturalness']) ? sanitize_text_field(wp_unslash($_POST['ai_naturalness'])) : 'human';
-            $semantic_aggressiveness = isset($_POST['semantic_aggressiveness']) ? sanitize_text_field(wp_unslash($_POST['semantic_aggressiveness'])) : 'moderate';
-            $readability_target = isset($_POST['readability_target']) ? sanitize_text_field(wp_unslash($_POST['readability_target'])) : 'easy';
+            // BOŞ STRING = Kullanıcı seçmedi, Brain override yapabilir
+            // DOLU STRING = Kullanıcı seçti, kullanıcı tercihi üstün
+            $content_intent = isset($_POST['content_intent']) ? sanitize_text_field(wp_unslash($_POST['content_intent'])) : '';
+            $expertise_depth = isset($_POST['expertise_depth']) ? sanitize_text_field(wp_unslash($_POST['expertise_depth'])) : '';
+            $geo_optimization = isset($_POST['geo_optimization']) ? sanitize_text_field(wp_unslash($_POST['geo_optimization'])) : '';
+            $ai_naturalness = isset($_POST['ai_naturalness']) ? sanitize_text_field(wp_unslash($_POST['ai_naturalness'])) : '';
+            $semantic_aggressiveness = isset($_POST['semantic_aggressiveness']) ? sanitize_text_field(wp_unslash($_POST['semantic_aggressiveness'])) : '';
+            $readability_target = isset($_POST['readability_target']) ? sanitize_text_field(wp_unslash($_POST['readability_target'])) : '';
+            
+            // Detect user explicit controls
+            $user_explicit_controls = !empty($content_intent) || !empty($expertise_depth) || !empty($geo_optimization) || 
+                                      !empty($ai_naturalness) || !empty($semantic_aggressiveness) || !empty($readability_target);
+            
+            // Apply defaults only if user didn't select
+            if (!$user_explicit_controls) {
+                $content_intent = 'informational';
+                $expertise_depth = 'intermediate';
+                $geo_optimization = 'moderate';
+                $ai_naturalness = 'human';
+                $semantic_aggressiveness = 'moderate';
+                $readability_target = 'easy';
+                error_log("DODO AJAX: user_explicit_controls = FALSE - Brain can override");
+            } else {
+                error_log("DODO AJAX: user_explicit_controls = TRUE - User preferences locked");
+            }
             
             // Answer Blocks Controls (Task 6.2 - Frontend to Backend)
             $answer_blocks_enabled = isset($_POST['answer_blocks_enabled']) ? (sanitize_text_field(wp_unslash($_POST['answer_blocks_enabled'])) === '1') : null;
@@ -1059,6 +1052,7 @@ class DODO_Admin {
                 'ai_naturalness' => $ai_naturalness,
                 'semantic_aggressiveness' => $semantic_aggressiveness,
                 'readability_target' => $readability_target,
+                'user_explicit_controls' => $user_explicit_controls, // Brain override flag
                 // Answer Blocks Controls (Task 6.2)
                 'answer_blocks_enabled' => $answer_blocks_enabled,
                 'block_short_answer' => $block_short_answer,

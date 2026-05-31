@@ -116,6 +116,7 @@ class DODO_Generation_Strategy {
             'long' => 2500,
             'very_long' => 3500,
             'comprehensive' => 4000,
+            'authority' => 5000, // NEW: Authority content 4000-6000 words
         );
         
         return $profiles[$length] ?? 1500;
@@ -131,6 +132,7 @@ class DODO_Generation_Strategy {
             'long' => 2000,
             'very_long' => 3000,
             'comprehensive' => 3500,
+            'authority' => 4000, // NEW: Authority minimum 4000 words
         );
         
         return $profiles[$length] ?? 1200;
@@ -146,6 +148,7 @@ class DODO_Generation_Strategy {
             'long' => 8,
             'very_long' => 10,
             'comprehensive' => 12,
+            'authority' => 15, // NEW: Authority 15 sections
         );
         
         return $profiles[$length] ?? 6;
@@ -161,6 +164,7 @@ class DODO_Generation_Strategy {
             'long' => 8,
             'very_long' => 10,
             'comprehensive' => 12,
+            'authority' => 15, // NEW: Authority 15 H2
         );
         
         return $profiles[$length] ?? 6;
@@ -176,6 +180,7 @@ class DODO_Generation_Strategy {
             'long' => 15,
             'very_long' => 20,
             'comprehensive' => 25,
+            'authority' => 30, // NEW: Authority 30 H3
         );
         
         return $profiles[$length] ?? 10;
@@ -191,6 +196,7 @@ class DODO_Generation_Strategy {
             'long' => 7,
             'very_long' => 9,
             'comprehensive' => 10,
+            'authority' => 12, // NEW: Authority 12 FAQ
         );
         
         return $profiles[$length] ?? 5;

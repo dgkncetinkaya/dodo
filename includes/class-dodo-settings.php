@@ -290,7 +290,8 @@ class DODO_Settings {
         return array(
             'short' => __('Hızlı İçerik (1200-1800 kelime)', 'dodo-ai-seo'),
             'medium' => __('SEO Blog (2500-3500 kelime)', 'dodo-ai-seo'),
-            'long' => __('Otorite İçerik (4000-6000 kelime)', 'dodo-ai-seo'),
+            'long' => __('Uzun İçerik (4000-6000 kelime)', 'dodo-ai-seo'),
+            'authority' => __('Otorite İçerik (4000-6000 kelime)', 'dodo-ai-seo'),
         );
     }
     

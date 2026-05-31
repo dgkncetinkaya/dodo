@@ -239,7 +239,8 @@ class DODO_Core {
         $this->settings = new DODO_Settings();
         $this->admin = new DODO_Admin();
         $this->frontend = new DODO_Frontend();
-        $this->generator = new DODO_Generator();
+        // Generator lazy-loaded - only when needed (not on every request)
+        // $this->generator = new DODO_Generator();
         
         // Content Improver Meta Box (DEPRECATED - Disabled in favor of standalone admin page)
         // new DODO_Improver_Metabox();
@@ -437,17 +438,56 @@ class DODO_Core {
                 continue; // Skip posts without focus keyword
             }
             
-            // Calculate scores (lightweight version)
+            // Calculate scores using real analyzers
             $score_calculator = new DODO_Score_Calculator();
             $health_score = $score_calculator->calculate_health_score($post->ID);
             
-            $seo_score = rand(70, 95); // Simplified for performance
-            $quality_score = rand(70, 90);
-            $readability_score = rand(65, 85);
-            $semantic_score = rand(70, 90);
-            $ai_risk_score = rand(10, 30);
-            $geo_score = rand(60, 85);
-            $entity_coverage = rand(70, 90);
+            // Get real scores from analyzers (not random!)
+            $content_analyzer = new DODO_Content_Analyzer();
+            $content = get_post_field('post_content', $post->ID);
+            
+            // SEO Score
+            $seo_analysis = $content_analyzer->analyze_seo($content, $focus_keyword);
+            $seo_score = isset($seo_analysis['score']) ? $seo_analysis['score'] : null;
+            
+            // Quality Score
+            $quality_analysis = $content_analyzer->analyze_quality($content);
+            $quality_score = isset($quality_analysis['score']) ? $quality_analysis['score'] : null;
+            
+            // Readability Score
+            $readability_analysis = $content_analyzer->analyze_readability($content);
+            $readability_score = isset($readability_analysis['score']) ? $readability_analysis['score'] : null;
+            
+            // Semantic Score
+            $semantic_analysis = $content_analyzer->analyze_semantic($content, $focus_keyword);
+            $semantic_score = isset($semantic_analysis['score']) ? $semantic_analysis['score'] : null;
+            
+            // AI Risk Score
+            if (class_exists('DODO_AI_Detector')) {
+                $ai_detector = new DODO_AI_Detector();
+                $ai_analysis = $ai_detector->analyze($content);
+                $ai_risk_score = isset($ai_analysis['ai_similarity_score']) ? $ai_analysis['ai_similarity_score'] : null;
+            } else {
+                $ai_risk_score = null;
+            }
+            
+            // GEO Score
+            if (class_exists('DODO_GEO_Analyzer')) {
+                $geo_analyzer = new DODO_GEO_Analyzer();
+                $geo_analysis = $geo_analyzer->analyze($content, $focus_keyword);
+                $geo_score = isset($geo_analysis['score']) ? $geo_analysis['score'] : null;
+            } else {
+                $geo_score = null;
+            }
+            
+            // Entity Coverage
+            if (class_exists('DODO_Semantic_Analyzer')) {
+                $semantic_analyzer = new DODO_Semantic_Analyzer();
+                $entity_analysis = $semantic_analyzer->analyze_entities($content);
+                $entity_coverage = isset($entity_analysis['coverage_score']) ? $entity_analysis['coverage_score'] : null;
+            } else {
+                $entity_coverage = null;
+            }
             
             // Get workflow status
             $workflow_engine = new DODO_Workflow_Engine();

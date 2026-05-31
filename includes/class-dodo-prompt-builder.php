@@ -178,18 +178,18 @@ class DODO_Prompt_Builder {
         $geo_rules = array(
             'none' => "**GEO Yok:**\n- Standart SEO odaklı yaz",
             'light' => "**Hafif GEO:**\n- Bazı soru-cevap formatları ekle",
-            'moderate' => "**Orta GEO:**\n- Soru başlıkları kullan\n- Direkt cevaplar ver",
-            'aggressive' => "**Agresif GEO:**\n- Her H2 altında kısa cevap paragrafı\n- Featured snippet formatı\n- Soru-cevap yapısı",
+            'moderate' => "**Orta GEO:**\n- Soru başlıkları kullan\n- Direkt cevaplar ver\n- Yapılandırılmış içerik",
+            'aggressive' => "**Agresif GEO (LLM Extraction Optimized):**\n\n**ZORUNLU - HER H2 ALTINDA:**\n- İlk paragraf 40-60 kelime, direkt cevap\n- Featured snippet formatı kullan\n- Soru-cevap yapısı\n\n**ZORUNLU FORMATLAR:**\n- Tanım kutuları: **[Terim]:** [Kısa açıklama]\n- Kısa listeler (3-5 madde)\n- Tablo formatları\n- Adım adım numaralı listeler\n\n**LLM İÇİN OPTİMİZE ET:**\n- Her paragraf bağımsız anlaşılabilir\n- Chunk-friendly yapı\n- Citation-ready cümleler\n- Entity yoğunluğu (marka, ürün, yer isimleri)",
         );
         $rules .= $geo_rules[$geo_optimization] ?? $geo_rules['moderate'];
         $rules .= "\n\n";
         
         // AI Naturalness
         $naturalness_rules = array(
-            'very_human' => "**Çok İnsan:**\n- Kişisel anekdotlar ekle\n- Konuşma dili kullan",
-            'human' => "**İnsan:**\n- Doğrudan anlatım\n- Aktif cümleler kullan",
-            'balanced' => "**Dengeli:**\n- Profesyonel ama akıcı",
-            'ai_friendly' => "**AI Dostu:**\n- Yapılandırılmış format",
+            'very_human' => "**Çok İnsan:**\n- Kişisel anekdotlar ekle\n- Duygusal bağ kur\n- Konuşma dili kullan",
+            'human' => "**İnsan (AI Kalıpları Yasak):**\n\n**YASAKLI KALIPLAR:**\n- 'Günümüzde...'\n- 'Önemli bir nokta...'\n- 'Dikkat edilmesi gereken...'\n- 'Sonuç olarak...'\n- 'Özetle...'\n- 'Ayrıca...'\n- 'Bununla birlikte...'\n- 'Bu yazıda...'\n- 'Bu makalede...'\n\n**ZORUNLU:**\n- Doğrudan anlatım\n- Aktif cümleler\n- Kısa ve net ifadeler\n- Gerçek deneyim dili",
+            'balanced' => "**Dengeli:**\n- Profesyonel ama akıcı\n- Doğal geçişler",
+            'ai_friendly' => "**AI Dostu:**\n- Yapılandırılmış format\n- Net ve düzenli",
         );
         $rules .= $naturalness_rules[$ai_naturalness] ?? $naturalness_rules['human'];
         $rules .= "\n\n";
@@ -446,6 +446,21 @@ class DODO_Prompt_Builder {
                 'faq_answer_words' => '80-150',
                 'min_section_words' => 300,
                 'section_words' => '700-1000',
+            ),
+            'authority' => array(
+                'min_words' => 4000,
+                'target_words' => '4000-6000',
+                'max_words' => 6000,
+                'intro_words' => '500-700',
+                'main_words' => '3500-5000',
+                'faq_words' => '800-1000',
+                'conclusion_words' => '400-600',
+                'h2_count' => '12-15',
+                'h3_per_h2' => '2-3',
+                'faq_count' => 12,
+                'faq_answer_words' => '100-200',
+                'min_section_words' => 350,
+                'section_words' => '800-1200',
             ),
         );
         
