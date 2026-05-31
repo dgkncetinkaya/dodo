@@ -1,0 +1,1860 @@
+/**
+ * DODO AI SEO - Enterprise Design System
+ * Linear/Vercel/Notion-inspired minimal premium UI
+ * 
+ * @package DODO_AI_SEO
+ * @since 2.0.0 (Sprint 4.5)
+ */
+
+/* ============================================
+   DESIGN SYSTEM V2 - CLEAN LIGHT THEME
+   Modern, professional, readable
+   ============================================ */
+:root {
+    /* === LIGHT THEME BASE === */
+    --dodo-bg-base: #f6f8fb;
+    --dodo-bg-surface: #ffffff;
+    --dodo-bg-card: #ffffff;
+    --dodo-bg-elevated: #f9fafb;
+    --dodo-bg-hover: #f3f4f6;
+    --dodo-bg-overlay: rgba(0, 0, 0, 0.5);
+    
+    /* === BORDERS === */
+    --dodo-border-subtle: #f3f4f6;
+    --dodo-border-default: #e5e7eb;
+    --dodo-border-strong: #d1d5db;
+    --dodo-border-focus: #2563eb;
+    
+    /* === TEXT === */
+    --dodo-text-primary: #111827;
+    --dodo-text-secondary: #4b5563;
+    --dodo-text-tertiary: #6b7280;
+    --dodo-text-quaternary: #9ca3af;
+    --dodo-text-disabled: #d1d5db;
+    --dodo-text-inverse: #ffffff;
+    --dodo-text-link: #2563eb;
+    --dodo-text-link-hover: #1d4ed8;
+    
+    /* === PRIMARY ACCENT === */
+    --dodo-primary: #2563eb;
+    --dodo-primary-hover: #1d4ed8;
+    --dodo-primary-active: #1e40af;
+    --dodo-primary-bg: rgba(37, 99, 235, 0.1);
+    --dodo-primary-border: rgba(37, 99, 235, 0.2);
+    
+    /* === SEMANTIC COLORS === */
+    --dodo-success: #059669;
+    --dodo-success-bg: #d1fae5;
+    --dodo-success-border: #6ee7b7;
+    
+    --dodo-warning: #d97706;
+    --dodo-warning-bg: #fef3c7;
+    --dodo-warning-border: #fcd34d;
+    
+    --dodo-error: #dc2626;
+    --dodo-error-bg: #fee2e2;
+    --dodo-error-border: #fca5a5;
+    
+    --dodo-info: #2563eb;
+    --dodo-info-bg: #dbeafe;
+    --dodo-info-border: #93c5fd;
+    
+    /* === TYPOGRAPHY === */
+    --dodo-font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --dodo-font-mono: ui-monospace, "SF Mono", "Cascadia Code", "Roboto Mono", Menlo, Consolas, monospace;
+    
+    /* Font Sizes */
+    --dodo-text-xs: 0.75rem;      /* 12px */
+    --dodo-text-sm: 0.875rem;     /* 14px */
+    --dodo-text-base: 0.9375rem;  /* 15px */
+    --dodo-text-md: 1rem;         /* 16px */
+    --dodo-text-lg: 1.125rem;     /* 18px */
+    --dodo-text-xl: 1.25rem;      /* 20px */
+    --dodo-text-2xl: 1.5rem;      /* 24px */
+    --dodo-text-3xl: 1.875rem;    /* 30px */
+    --dodo-text-4xl: 2.25rem;     /* 36px */
+    
+    /* Line Heights */
+    --dodo-leading-none: 1;
+    --dodo-leading-tight: 1.25;
+    --dodo-leading-snug: 1.375;
+    --dodo-leading-normal: 1.5;
+    --dodo-leading-relaxed: 1.625;
+    --dodo-leading-loose: 2;
+    
+    /* Font Weights */
+    --dodo-font-normal: 400;
+    --dodo-font-medium: 500;
+    --dodo-font-semibold: 600;
+    --dodo-font-bold: 700;
+    
+    /* === SPACING SCALE === */
+    --dodo-space-0: 0;
+    --dodo-space-1: 0.25rem;   /* 4px */
+    --dodo-space-2: 0.5rem;    /* 8px */
+    --dodo-space-3: 0.75rem;   /* 12px */
+    --dodo-space-4: 1rem;      /* 16px */
+    --dodo-space-5: 1.25rem;   /* 20px */
+    --dodo-space-6: 1.5rem;    /* 24px */
+    --dodo-space-7: 1.75rem;   /* 28px */
+    --dodo-space-8: 2rem;      /* 32px */
+    --dodo-space-10: 2.5rem;   /* 40px */
+    --dodo-space-12: 3rem;     /* 48px */
+    --dodo-space-16: 4rem;     /* 64px */
+    --dodo-space-20: 5rem;     /* 80px */
+    --dodo-space-24: 6rem;     /* 96px */
+    
+    /* === BORDER RADIUS === */
+    --dodo-radius-none: 0;
+    --dodo-radius-sm: 0.25rem;   /* 4px */
+    --dodo-radius-md: 0.375rem;  /* 6px */
+    --dodo-radius-lg: 0.5rem;    /* 8px */
+    --dodo-radius-xl: 0.75rem;   /* 12px */
+    --dodo-radius-2xl: 1rem;     /* 16px */
+    --dodo-radius-full: 9999px;
+    
+    /* === SHADOWS (Light Theme) === */
+    --dodo-shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --dodo-shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --dodo-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --dodo-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --dodo-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    --dodo-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    
+    /* === TRANSITIONS === */
+    --dodo-transition-fast: 100ms cubic-bezier(0.4, 0, 0.2, 1);
+    --dodo-transition-base: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --dodo-transition-slow: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    --dodo-transition-slower: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* === Z-INDEX SCALE === */
+    --dodo-z-base: 0;
+    --dodo-z-dropdown: 1000;
+    --dodo-z-sticky: 1100;
+    --dodo-z-fixed: 1200;
+    --dodo-z-modal-backdrop: 1300;
+    --dodo-z-modal: 1400;
+    --dodo-z-popover: 1500;
+    --dodo-z-tooltip: 1600;
+    --dodo-z-toast: 1700;
+    
+    /* === ACCENT ALIASES (for backward compatibility) === */
+    --dodo-accent-50: rgba(79, 124, 255, 0.05);
+    --dodo-accent-100: rgba(79, 124, 255, 0.1);
+    --dodo-accent-500: #4f7cff;
+    --dodo-accent-600: #4f7cff;
+    --dodo-accent-700: #3d68e6;
+}
+
+/* ============================================
+   BASE STYLES - DARK THEME
+   ============================================ */
+body.dodo-admin,
+.dodo-admin-wrap {
+    background: var(--dodo-bg-base);
+    color: var(--dodo-text-primary);
+    font-family: var(--dodo-font-sans);
+    font-size: var(--dodo-text-base);
+    line-height: var(--dodo-leading-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* WordPress admin body override */
+#wpwrap {
+    background: var(--dodo-bg-base);
+}
+
+#wpcontent {
+    background: var(--dodo-bg-base);
+}
+
+/* ============================================
+   TYPOGRAPHY SYSTEM
+   Inter/Geist/SF Pro feel
+   ============================================ */
+
+/* Display */
+.dodo-display {
+    font-size: var(--dodo-text-4xl);
+    font-weight: var(--dodo-font-bold);
+    line-height: var(--dodo-leading-tight);
+    letter-spacing: -0.02em;
+    color: var(--dodo-text-primary);
+}
+
+/* Headings */
+.dodo-h1,
+h1.dodo-heading {
+    font-size: var(--dodo-text-3xl);
+    font-weight: var(--dodo-font-semibold);
+    line-height: var(--dodo-leading-tight);
+    letter-spacing: -0.015em;
+    color: var(--dodo-text-primary);
+    margin: 0 0 var(--dodo-space-4) 0;
+}
+
+.dodo-h2,
+h2.dodo-heading {
+    font-size: var(--dodo-text-2xl);
+    font-weight: var(--dodo-font-semibold);
+    line-height: var(--dodo-leading-snug);
+    letter-spacing: -0.01em;
+    color: var(--dodo-text-primary);
+    margin: 0 0 var(--dodo-space-3) 0;
+}
+
+.dodo-h3,
+h3.dodo-heading {
+    font-size: var(--dodo-text-xl);
+    font-weight: var(--dodo-font-semibold);
+    line-height: var(--dodo-leading-snug);
+    letter-spacing: -0.005em;
+    color: var(--dodo-text-primary);
+    margin: 0 0 var(--dodo-space-3) 0;
+}
+
+.dodo-h4,
+h4.dodo-heading {
+    font-size: var(--dodo-text-lg);
+    font-weight: var(--dodo-font-medium);
+    line-height: var(--dodo-leading-normal);
+    color: var(--dodo-text-primary);
+    margin: 0 0 var(--dodo-space-2) 0;
+}
+
+/* Body Text */
+.dodo-body {
+    font-size: var(--dodo-text-base);
+    line-height: var(--dodo-leading-relaxed);
+    color: var(--dodo-text-secondary);
+}
+
+.dodo-body-sm {
+    font-size: var(--dodo-text-sm);
+    line-height: var(--dodo-leading-relaxed);
+    color: var(--dodo-text-secondary);
+}
+
+/* Small/Muted Text */
+.dodo-text-small {
+    font-size: var(--dodo-text-sm);
+    line-height: var(--dodo-leading-normal);
+    color: var(--dodo-text-tertiary);
+}
+
+.dodo-text-xs {
+    font-size: var(--dodo-text-xs);
+    line-height: var(--dodo-leading-normal);
+    color: var(--dodo-text-tertiary);
+}
+
+.dodo-text-muted {
+    color: var(--dodo-text-tertiary);
+}
+
+/* Monospace */
+.dodo-mono {
+    font-family: var(--dodo-font-mono);
+    font-size: 0.9em;
+}
+
+/* Links */
+.dodo-link {
+    color: var(--dodo-text-link);
+    text-decoration: none;
+    transition: color var(--dodo-transition-fast);
+}
+
+.dodo-link:hover {
+    color: var(--dodo-text-link-hover);
+    text-decoration: underline;
+}
+
+/* ============================================
+   SVG ICON SIZE FIX - REGRESSION FIX
+   Prevent SVG icons from growing too large
+   ============================================ */
+
+/* Generic icon containers */
+.dodo-icon,
+.dodo-icon svg,
+.dodo-menu-icon svg,
+.dodo-stat-icon svg,
+.dodo-card-icon svg,
+.dodo-btn svg,
+.dodo-btn-primary svg,
+.dodo-btn-secondary svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* Page header icons */
+.dodo-page-title-icon {
+    width: 24px !important;
+    height: 24px !important;
+    flex-shrink: 0;
+}
+
+/* Summary/stat card icons */
+.dodo-summary-icon svg,
+.dodo-stat-card-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Empty state icons */
+.dodo-empty-state-icon svg {
+    width: 56px;
+    height: 56px;
+}
+
+/* Sidebar menu icons */
+.dodo-sidebar-menu-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ============================================
+   LIGHT THEME WRAPPER - CLEAN & READABLE
+   Apply light theme only to DODO pages
+   ============================================ */
+
+/* Wrap all DODO pages in light theme */
+.dodo-admin-wrap {
+    background: var(--dodo-bg-base);
+    min-height: 100vh;
+}
+
+/* Ensure light theme colors apply */
+.dodo-admin-wrap * {
+    box-sizing: border-box;
+}
+
+/* ============================================
+   ACCESSIBILITY & FOCUS STATES
+   Modern, subtle, accessible
+   ============================================ */
+
+/* Focus visible (keyboard navigation) */
+*:focus-visible {
+    outline: 2px solid var(--dodo-accent-500);
+    outline-offset: 2px;
+    border-radius: var(--dodo-radius-md);
+}
+
+/* Remove outline on mouse click */
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Interactive elements focus ring */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:focus-visible {
+    outline: 2px solid var(--dodo-accent-500);
+    outline-offset: 2px;
+}
+
+/* Skip to content (screen readers) */
+.dodo-skip-link {
+    position: absolute;
+    top: -100px;
+    left: var(--dodo-space-4);
+    background: var(--dodo-accent-600);
+    color: var(--dodo-text-inverse);
+    padding: var(--dodo-space-2) var(--dodo-space-4);
+    border-radius: var(--dodo-radius-md);
+    text-decoration: none;
+    font-weight: var(--dodo-font-medium);
+    z-index: var(--dodo-z-tooltip);
+    transition: top var(--dodo-transition-fast);
+}
+
+.dodo-skip-link:focus {
+    top: var(--dodo-space-4);
+}
+
+/* Screen reader only */
+.dodo-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ============================================
+   PAGE HEADER - CLEAN LIGHT THEME
+   Clean, minimal, professional
+   ============================================ */
+.dodo-page-header {
+    background: var(--dodo-bg-surface);
+    border-bottom: 1px solid var(--dodo-border-default);
+    padding: var(--dodo-space-8) 0;
+    margin: 0 0 var(--dodo-space-8) 0;
+}
+
+.dodo-page-header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--dodo-space-6);
+}
+
+.dodo-page-title {
+    margin: 0 0 var(--dodo-space-2) 0 !important;
+    font-size: var(--dodo-text-3xl) !important;
+    font-weight: var(--dodo-font-semibold) !important;
+    color: var(--dodo-text-primary) !important;
+    letter-spacing: -0.02em;
+    line-height: var(--dodo-leading-tight) !important;
+    display: flex;
+    align-items: center;
+    gap: var(--dodo-space-3);
+}
+
+/* Icon support (SVG only) */
+.dodo-page-title-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--dodo-text-tertiary);
+    flex-shrink: 0;
+}
+
+.dodo-page-description {
+    margin: 0;
+    font-size: var(--dodo-text-base);
+    line-height: var(--dodo-leading-relaxed);
+    color: var(--dodo-text-secondary);
+    max-width: 640px;
+}
+
+/* ============================================
+   LAYOUT CONTAINERS
+   Modern, responsive, clean
+   ============================================ */
+.dodo-admin-container {
+    max-width: none;
+    width: 100%;
+    margin: 0;
+    padding: 0 40px 0 20px;
+}
+
+/* Blog Create Page - Full Width */
+.dodo-new-blog-page,
+.dodo-page-content,
+.dodo-new-blog-page .wrap {
+    max-width: none !important;
+    width: 100% !important;
+}
+
+/* Blog Create Layout - 3 Column Grid */
+.blog-create-layout {
+    width: 100%;
+    max-width: none;
+    display: grid;
+    grid-template-columns: 560px 1fr 460px;
+    column-gap: 48px;
+    align-items: start;
+    margin: 0;
+    padding: 0;
+}
+
+.blog-form-card {
+    grid-column: 1;
+    grid-row: 1;
+    width: 560px;
+}
+
+.blog-info-sidebar {
+    grid-column: 3;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: sticky;
+    top: 32px;
+    width: 460px;
+    justify-self: end;
+    margin-left: auto;
+}
+
+/* Legacy layout support (for other pages) */
+.dodo-layout-container {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+.dodo-main-content {
+    min-width: 0;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.dodo-sidebar {
+    position: sticky;
+    top: 32px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+/* Section spacing */
+.dodo-section {
+    margin-bottom: var(--dodo-space-10);
+}
+
+.dodo-section:last-child {
+    margin-bottom: 0;
+}
+
+.dodo-section-header {
+    margin-bottom: var(--dodo-space-6);
+}
+
+.dodo-section-title {
+    font-size: var(--dodo-text-xl);
+    font-weight: var(--dodo-font-semibold);
+    color: var(--dodo-text-primary);
+    margin: 0 0 var(--dodo-space-2) 0;
+}
+
+.dodo-section-description {
+    font-size: var(--dodo-text-sm);
+    color: var(--dodo-text-secondary);
+    margin: 0;
+}
+
+/* ============================================
+   CARD SYSTEM - DARK PREMIUM
+   Layered surfaces with subtle elevation
+   ============================================ */
+.dodo-card {
+    background: var(--dodo-bg-card);
+    border: 1px solid var(--dodo-border-default);
+    border-radius: var(--dodo-radius-xl);
+    box-shadow: var(--dodo-shadow-sm);
+    padding: var(--dodo-space-6);
+    margin-bottom: var(--dodo-space-6);
+    transition: all var(--dodo-transition-base);
+}
+
+.dodo-card:hover {
+    box-shadow: var(--dodo-shadow-md);
+    border-color: var(--dodo-border-strong);
+}
+
+.dodo-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--dodo-space-5);
+    padding-bottom: var(--dodo-space-4);
+    border-bottom: 1px solid var(--dodo-border-subtle);
+}
+
+.dodo-card-title {
+    margin: 0;
+    font-size: var(--dodo-text-lg);
+    font-weight: var(--dodo-font-semibold);
+    color: var(--dodo-text-primary);
+    letter-spacing: -0.01em;
+}
+
+.dodo-card-description {
+    margin: var(--dodo-space-2) 0 0 0;
+    font-size: var(--dodo-text-sm);
+    color: var(--dodo-text-secondary);
+    line-height: var(--dodo-leading-relaxed);
+}
+
+.dodo-card-body {
+    /* Content area */
+}
+
+.dodo-card-footer {
+    margin-top: var(--dodo-space-5);
+    padding-top: var(--dodo-space-4);
+    border-top: 1px solid var(--dodo-border-subtle);
+}
+
+/* Elevated card (more prominent) */
+.dodo-card-elevated {
+    background: var(--dodo-bg-elevated);
+    box-shadow: var(--dodo-shadow-lg);
+}
+
+.dodo-card-elevated:hover {
+    box-shadow: var(--dodo-shadow-xl);
+    transform: translateY(-1px);
+}
+
+/* Sidebar cards (Premium SaaS Style) */
+.dodo-sidebar-card {
+    background: linear-gradient(to bottom, #ffffff 0%, #fafbfc 100%);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.04),
+        0 4px 12px rgba(0, 0, 0, 0.02);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.dodo-sidebar-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.dodo-sidebar-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.06),
+        0 8px 24px rgba(0, 0, 0, 0.04);
+    border-color: rgba(37, 99, 235, 0.15);
+}
+
+.dodo-sidebar-card:hover::before {
+    opacity: 1;
+}
+
+.dodo-sidebar-card-title {
+    margin: 0 0 20px 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: #111827;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dodo-sidebar-card-title::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.dodo-sidebar-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dodo-sidebar-list li {
+    padding: 14px 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4b5563;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    margin-bottom: 4px;
+}
+
+.dodo-sidebar-list li:hover {
+    background: rgba(37, 99, 235, 0.03);
+    color: #1f2937;
+    padding-left: 16px;
+}
+
+.dodo-sidebar-list li:before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 2px;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+}
+
+.dodo-sidebar-list li:after {
+    content: '✓';
+    position: absolute;
+    left: 16px;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.dodo-sidebar-list li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* Info/Status cards - Premium Style */
+.dodo-info-card {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+}
+
+.dodo-success-card {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
+}
+
+.dodo-success-card p,
+.dodo-info-card p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.dodo-success-card svg,
+.dodo-info-card svg {
+    flex-shrink: 0;
+}
+
+.dodo-warning-card {
+    background: var(--dodo-warning-bg);
+    border-color: var(--dodo-warning);
+}
+
+.dodo-error-card {
+    background: var(--dodo-error-bg);
+    border-color: var(--dodo-error);
+}
+
+/* ============================================
+   STATS GRID - DARK PREMIUM
+   Clean metrics with subtle backgrounds
+   ============================================ */
+.dodo-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--dodo-space-4);
+    margin-bottom: var(--dodo-space-8);
+}
+
+.dodo-stat-card {
+    background: var(--dodo-bg-card);
+    border: 1px solid var(--dodo-border-default);
+    border-radius: var(--dodo-radius-lg);
+    padding: var(--dodo-space-5);
+    transition: all var(--dodo-transition-base);
+    box-shadow: var(--dodo-shadow-xs);
+}
+
+.dodo-stat-card:hover {
+    border-color: var(--dodo-border-strong);
+    box-shadow: var(--dodo-shadow-sm);
+    transform: translateY(-1px);
+}
+
+.dodo-stat-label {
+    font-size: var(--dodo-text-xs);
+    font-weight: var(--dodo-font-medium);
+    color: var(--dodo-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--dodo-space-2);
+}
+
+.dodo-stat-value {
+    font-size: var(--dodo-text-3xl);
+    font-weight: var(--dodo-font-semibold);
+    color: var(--dodo-text-primary);
+    line-height: var(--dodo-leading-none);
+    margin-bottom: var(--dodo-space-1);
+    font-variant-numeric: tabular-nums;
+}
+
+.dodo-stat-change {
+    font-size: var(--dodo-text-sm);
+    font-weight: var(--dodo-font-medium);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--dodo-space-1);
+}
+
+.dodo-stat-change.positive {
+    color: var(--dodo-success);
+}
+
+.dodo-stat-change.negative {
+    color: var(--dodo-error);
+}
+
+.dodo-stat-change.neutral {
+    color: var(--dodo-text-tertiary);
+}
+
+/* ============================================
+   FORM SYSTEM - Modern Inputs
+   Clean, accessible, premium feel
+   ============================================ */
+.dodo-form-group {
+    margin-bottom: var(--dodo-space-6);
+}
+
+.dodo-form-label,
+.dodo-label {
+    display: block;
+    margin-bottom: var(--dodo-space-2);
+    font-size: var(--dodo-text-sm);
+    font-weight: var(--dodo-font-medium);
+    color: var(--dodo-text-primary);
+    letter-spacing: -0.005em;
+}
+
+.dodo-label.required::after {
+    content: ' *';
+    color: var(--dodo-error);
+}
+
+/* Input fields */
+.dodo-input,
+.dodo-select,
+.dodo-textarea {
+    width: 100%;
+    padding: 0 var(--dodo-space-3);
+    height: 40px;
+    font-size: 15px !important;
+    font-family: var(--dodo-font-sans);
+    color: #111827 !important;
+    background: var(--dodo-bg-base);
+    border: 1px solid var(--dodo-border-default);
+    border-radius: var(--dodo-radius-lg);
+    transition: all var(--dodo-transition-base);
+    box-shadow: var(--dodo-shadow-xs);
+    line-height: 1.5 !important;
+    box-sizing: border-box;
+}
+
+/* Select specific fixes */
+.dodo-select {
+    padding-right: var(--dodo-space-8);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--dodo-space-3) center;
+    background-size: 12px;
+    color: #111827 !important;
+    white-space: normal;
+    text-overflow: ellipsis;
+}
+
+/* Select option styling */
+.dodo-select option {
+    padding: var(--dodo-space-2);
+    background: #ffffff;
+    color: #111827 !important;
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    white-space: normal;
+}
+
+.dodo-textarea {
+    height: auto;
+    padding: var(--dodo-space-3);
+    min-height: 120px;
+    resize: vertical;
+    line-height: var(--dodo-leading-relaxed) !important;
+    color: #111827 !important;
+}
+
+/* Hover state */
+.dodo-input:hover,
+.dodo-select:hover,
+.dodo-textarea:hover {
+    border-color: var(--dodo-border-strong);
+}
+
+/* Focus state */
+.dodo-input:focus,
+.dodo-select:focus,
+.dodo-textarea:focus {
+    outline: none;
+    border-color: var(--dodo-accent-500);
+    box-shadow: 0 0 0 3px var(--dodo-accent-100);
+}
+
+/* Disabled state */
+.dodo-input:disabled,
+.dodo-select:disabled,
+.dodo-textarea:disabled {
+    background: var(--dodo-bg-muted);
+    color: var(--dodo-text-disabled);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Error state */
+.dodo-input.error,
+.dodo-select.error,
+.dodo-textarea.error {
+    border-color: var(--dodo-error);
+}
+
+.dodo-input.error:focus,
+.dodo-select.error:focus,
+.dodo-textarea.error:focus {
+    box-shadow: 0 0 0 3px var(--dodo-error-bg);
+}
+
+/* Placeholder */
+.dodo-input::placeholder,
+.dodo-textarea::placeholder {
+    color: #9ca3af !important;
+    opacity: 1;
+}
+
+/* Help text */
+.dodo-help-text,
+.dodo-form-hint {
+    margin-top: var(--dodo-space-2);
+    font-size: 13px;
+    color: var(--dodo-text-tertiary);
+    line-height: var(--dodo-leading-relaxed);
+}
+
+.dodo-error-text {
+    margin-top: var(--dodo-space-2);
+    font-size: var(--dodo-text-sm);
+    color: var(--dodo-error);
+    line-height: var(--dodo-leading-relaxed);
+}
+
+/* Preset Buttons */
+.dodo-preset-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--dodo-bg-surface);
+    border: 1px solid var(--dodo-border-default);
+    border-radius: var(--dodo-radius-lg);
+    font-size: 14px;
+    font-weight: var(--dodo-font-medium);
+    color: var(--dodo-text-secondary);
+    cursor: pointer;
+    transition: all var(--dodo-transition-base);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dodo-preset-btn:hover {
+    background: var(--dodo-bg-hover);
+    border-color: var(--dodo-border-strong);
+    color: var(--dodo-text-primary);
+}
+
+.dodo-preset-btn.active {
+    background: var(--dodo-primary-bg);
+    border-color: var(--dodo-primary);
+    color: var(--dodo-primary);
+}
+
+.dodo-preset-btn svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.dodo-preset-btn span {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Form layouts */
+.dodo-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--dodo-space-5);
+}
+
+.dodo-form-row-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--dodo-space-5);
+}
+
+.dodo-col-half {
+    min-width: 0;
+}
+
+/* Input groups */
+.dodo-input-group {
+    display: flex;
+    align-items: stretch;
+}
+
+.dodo-input-group .dodo-input {
+    border-radius: var(--dodo-radius-lg) 0 0 var(--dodo-radius-lg);
+}
+
+.dodo-input-addon {
+    display: flex;
+    align-items: center;
+    padding: 0 var(--dodo-space-3);
+    background: var(--dodo-bg-muted);
+    border: 1px solid var(--dodo-border-default);
+    border-left: none;
+    border-radius: 0 var(--dodo-radius-lg) var(--dodo-radius-lg) 0;
+    font-size: var(--dodo-text-sm);
+    color: var(--dodo-text-tertiary);
+}
+
+/* ============================================
+   BUTTON SYSTEM - DARK PREMIUM
+   Clean, modern, accessible
+   ============================================ */
+
+/* Primary button */
+.dodo-btn-primary,
+.dodo-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--dodo-space-2);
+    height: 40px;
+    padding: 0 var(--dodo-space-5);
+    font-size: var(--dodo-text-base);
+    font-weight: var(--dodo-font-medium);
+    font-family: var(--dodo-font-sans);
+    color: var(--dodo-text-inverse) !important;
+    background: var(--dodo-primary);
+    border: 1px solid var(--dodo-primary) !important;
+    border-radius: var(--dodo-radius-lg);
+    cursor: pointer;
+    transition: all var(--dodo-transition-base);
+    text-decoration: none !important;
+    white-space: nowrap;
+}
+
+.dodo-btn-primary:hover,
+.dodo-submit-btn:hover {
+    background: var(--dodo-primary-hover);
+    border-color: var(--dodo-primary-hover) !important;
+    box-shadow: var(--dodo-shadow-md);
+    transform: translateY(-1px);
+}
+
+.dodo-btn-primary:active,
+.dodo-submit-btn:active {
+    background: var(--dodo-primary-active);
+    border-color: var(--dodo-primary-active) !important;
+    transform: translateY(0);
+}
+
+.dodo-btn-primary:disabled,
+.dodo-submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Secondary button */
+.dodo-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--dodo-space-2);
+    height: 40px;
+    padding: 0 var(--dodo-space-5);
+    font-size: var(--dodo-text-base);
+    font-weight: var(--dodo-font-medium);
+    color: var(--dodo-text-primary);
+    background: var(--dodo-bg-elevated);
+    border: 1px solid var(--dodo-border-default);
+    border-radius: var(--dodo-radius-lg);
+    cursor: pointer;
+    transition: all var(--dodo-transition-base);
+    text-decoration: none;
+}
+
+.dodo-btn-secondary:hover {
+    background: var(--dodo-bg-hover);
+    border-color: var(--dodo-border-strong);
+}
+
+.dodo-btn-secondary:active {
+    transform: translateY(1px);
+}
+
+/* Ghost button */
+.dodo-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--dodo-space-2);
+    height: 40px;
+    padding: 0 var(--dodo-space-4);
+    font-size: var(--dodo-text-base);
+    font-weight: var(--dodo-font-medium);
+    color: var(--dodo-text-secondary);
+    background: transparent;
+    border: none;
+    border-radius: var(--dodo-radius-lg);
+    cursor: pointer;
+    transition: all var(--dodo-transition-base);
+}
+
+.dodo-btn-ghost:hover {
+    background: var(--dodo-bg-hover);
+    color: var(--dodo-text-primary);
+}
+
+/* Subtle button */
+.dodo-btn-subtle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--dodo-space-2);
+    height: 32px;
+    padding: 0 var(--dodo-space-3);
+    font-size: var(--dodo-text-sm);
+    font-weight: var(--dodo-font-medium);
+    color: var(--dodo-text-secondary);
+    background: var(--dodo-bg-surface);
+    border: 1px solid var(--dodo-border-subtle);
+    border-radius: var(--dodo-radius-md);
+    cursor: pointer;
+    transition: all var(--dodo-transition-base);
+}
+
+.dodo-btn-subtle:hover {
+    background: var(--dodo-bg-elevated);
+    border-color: var(--dodo-border-default);
+    color: var(--dodo-text-primary);
+}
+
+/* Destructive button */
+.dodo-btn-destructive {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--dodo-space-2);
+    height: 40px;
+    padding: 0 var(--dodo-space-5);
+    font-size: var(--dodo-text-base);
+    font-weight: var(--dodo-font-medium);
+    color: var(--dodo-text-inverse);
+    background: var(--dodo-error);
+    border: 1px solid var(--dodo-error);
+    border-radius: var(--dodo-radius-lg);
+    cursor: pointer;
+    transition: all var(--dodo-transition-base);
+}
+
+.dodo-btn-destructive:hover {
+    background: #dc2626;
+    border-color: #dc2626;
+    box-shadow: var(--dodo-shadow-md);
+}
+
+/* Button sizes */
+.dodo-btn-sm {
+    height: 32px;
+    padding: 0 var(--dodo-space-3);
+    font-size: var(--dodo-text-sm);
+}
+
+.dodo-btn-lg {
+    height: 48px;
+    padding: 0 var(--dodo-space-6);
+    font-size: var(--dodo-text-lg);
+}
+
+/* Button group */
+.dodo-btn-group {
+    display: inline-flex;
+    gap: var(--dodo-space-2);
+}
+
+/* Form actions */
+.dodo-form-actions {
+    margin-top: var(--dodo-space-8);
+    padding-top: var(--dodo-space-6);
+    border-top: 1px solid var(--dodo-border-default);
+    display: flex;
+    align-items: center;
+    gap: var(--dodo-space-3);
+}
+
+/* ============================================
+   BADGES & PILLS - Minimal
+   ============================================ */
+.dodo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--dodo-space-1);
+    padding: var(--dodo-space-1) var(--dodo-space-2);
+    font-size: var(--dodo-text-xs);
+    font-weight: var(--dodo-font-medium);
+    line-height: 1;
+    border-radius: var(--dodo-radius-md);
+    white-space: nowrap;
+}
+
+.dodo-badge-default {
+    background: var(--dodo-bg-muted);
+    color: var(--dodo-text-secondary);
+}
+
+.dodo-badge-primary {
+    background: var(--dodo-accent-100);
+    color: var(--dodo-accent-700);
+}
+
+.dodo-badge-success {
+    background: var(--dodo-success-bg);
+    color: var(--dodo-success);
+}
+
+.dodo-badge-warning {
+    background: var(--dodo-warning-bg);
+    color: var(--dodo-warning);
+}
+
+.dodo-badge-error {
+    background: var(--dodo-error-bg);
+    color: var(--dodo-error);
+}
+
+/* Optional badge */
+.dodo-optional-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--dodo-space-1) var(--dodo-space-2);
+    background: var(--dodo-bg-muted);
+    color: var(--dodo-text-tertiary);
+    border-radius: var(--dodo-radius-sm);
+    font-size: var(--dodo-text-xs);
+    font-weight: var(--dodo-font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-left: var(--dodo-space-2);
+}
+
+/* Status indicators */
+.dodo-status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: var(--dodo-radius-full);
+    margin-right: var(--dodo-space-2);
+}
+
+.dodo-status-dot.success {
+    background: var(--dodo-success);
+}
+
+.dodo-status-dot.warning {
+    background: var(--dodo-warning);
+}
+
+.dodo-status-dot.error {
+    background: var(--dodo-error);
+}
+
+.dodo-status-dot.neutral {
+    background: var(--dodo-text-quaternary);
+}
+
+/* ============================================
+   LOADING STATES - Modern & Subtle
+   ============================================ */
+.dodo-loading {
+    background: var(--dodo-bg-base);
+    border: 1px solid var(--dodo-border-default);
+    border-radius: var(--dodo-radius-xl);
+    padding: var(--dodo-space-10);
+    text-align: center;
+}
+
+.dodo-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--dodo-border-default);
+    border-top-color: var(--dodo-accent-600);
+    border-radius: var(--dodo-radius-full);
+    animation: dodoSpinner 0.6s linear infinite;
+    margin: 0 auto var(--dodo-space-4);
+}
+
+.dodo-spinner-sm {
+    width: 16px;
+    height: 16px;
+    border-width: 2px;
+}
+
+.dodo-spinner-lg {
+    width: 48px;
+    height: 48px;
+    border-width: 4px;
+}
+
+.dodo-loading-text {
+    margin: 0 0 var(--dodo-space-2) 0;
+    font-size: var(--dodo-text-base);
+    font-weight: var(--dodo-font-medium);
+    color: var(--dodo-text-primary);
+}
+
+.dodo-loading-subtext {
+    margin: 0;
+    font-size: var(--dodo-text-sm);
+    color: var(--dodo-text-secondary);
+}
+
+/* Skeleton loading */
+.dodo-skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--dodo-bg-muted) 0%,
+        var(--dodo-bg-subtle) 50%,
+        var(--dodo-bg-muted) 100%
+    );
+    background-size: 200% 100%;
+    animation: dodoSkeleton 1.5s ease-in-out infinite;
+    border-radius: var(--dodo-radius-md);
+}
+
+.dodo-skeleton-text {
+    height: 1em;
+    margin-bottom: var(--dodo-space-2);
+}
+
+.dodo-skeleton-title {
+    height: 1.5em;
+    width: 60%;
+    margin-bottom: var(--dodo-space-3);
+}
+
+.dodo-skeleton-card {
+    height: 120px;
+    border-radius: var(--dodo-radius-lg);
+}
+
+/* Inline spinner */
+.dodo-inline-spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-top-color: transparent;
+    border-radius: var(--dodo-radius-full);
+    animation: dodoSpinner 0.6s linear infinite;
+    vertical-align: middle;
+}
+
+/* ============================================
+   EMPTY STATES - Intelligent Placeholders
+   ============================================ */
+.dodo-empty-state {
+    text-align: center;
+    padding: var(--dodo-space-12) var(--dodo-space-6);
+}
+
+.dodo-empty-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto var(--dodo-space-4);
+    color: var(--dodo-text-quaternary);
+}
+
+.dodo-empty-title {
+    font-size: var(--dodo-text-lg);
+    font-weight: var(--dodo-font-semibold);
+    color: var(--dodo-text-primary);
+    margin: 0 0 var(--dodo-space-2) 0;
+}
+
+.dodo-empty-description {
+    font-size: var(--dodo-text-base);
+    color: var(--dodo-text-secondary);
+    margin: 0 0 var(--dodo-space-6) 0;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: var(--dodo-leading-relaxed);
+}
+
+.dodo-empty-action {
+    margin-top: var(--dodo-space-4);
+}
+
+/* ============================================
+   RESULT MESSAGES - Clean Feedback
+   ============================================ */
+.dodo-result {
+    background: var(--dodo-bg-base);
+    border: 1px solid var(--dodo-border-default);
+    border-radius: var(--dodo-radius-lg);
+    padding: var(--dodo-space-5);
+    margin-top: var(--dodo-space-6);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--dodo-space-3);
+}
+
+.dodo-result.success {
+    background: var(--dodo-success-bg);
+    border-color: var(--dodo-success);
+}
+
+.dodo-result.error {
+    background: var(--dodo-error-bg);
+    border-color: var(--dodo-error);
+}
+
+.dodo-result.warning {
+    background: var(--dodo-warning-bg);
+    border-color: var(--dodo-warning);
+}
+
+.dodo-result.info {
+    background: var(--dodo-info-bg);
+    border-color: var(--dodo-info);
+}
+
+.dodo-result-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.dodo-result.success .dodo-result-icon {
+    color: var(--dodo-success);
+}
+
+.dodo-result.error .dodo-result-icon {
+    color: var(--dodo-error);
+}
+
+.dodo-result-content {
+    flex: 1;
+}
+
+.dodo-result-title {
+    font-size: var(--dodo-text-base);
+    font-weight: var(--dodo-font-semibold);
+    margin: 0 0 var(--dodo-space-1) 0;
+    color: var(--dodo-text-primary);
+}
+
+.dodo-result-message {
+    font-size: var(--dodo-text-sm);
+    color: var(--dodo-text-secondary);
+    margin: 0;
+    line-height: var(--dodo-leading-relaxed);
+}
+
+.dodo-result-actions {
+    margin-top: var(--dodo-space-3);
+    display: flex;
+    gap: var(--dodo-space-2);
+}
+
+/* ============================================
+   TABLES - Clean Data Display
+   ============================================ */
+.dodo-table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--dodo-border-default);
+    border-radius: var(--dodo-radius-lg);
+}
+
+.dodo-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--dodo-text-sm);
+}
+
+.dodo-table thead {
+    background: var(--dodo-bg-subtle);
+    border-bottom: 1px solid var(--dodo-border-default);
+}
+
+.dodo-table thead th {
+    padding: var(--dodo-space-3) var(--dodo-space-4);
+    text-align: left;
+    font-weight: var(--dodo-font-semibold);
+    color: var(--dodo-text-secondary);
+    font-size: var(--dodo-text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.dodo-table tbody tr {
+    border-bottom: 1px solid var(--dodo-border-subtle);
+    transition: background var(--dodo-transition-fast);
+}
+
+.dodo-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.dodo-table tbody tr:hover {
+    background: var(--dodo-bg-subtle);
+}
+
+.dodo-table tbody td {
+    padding: var(--dodo-space-3) var(--dodo-space-4);
+    color: var(--dodo-text-primary);
+}
+
+/* WordPress table overrides */
+.dodo-card table.wp-list-table {
+    border: none;
+    border-radius: var(--dodo-radius-lg);
+    overflow: hidden;
+}
+
+.dodo-card table.wp-list-table thead th {
+    background: var(--dodo-bg-subtle);
+    border-bottom: 1px solid var(--dodo-border-default);
+    font-weight: var(--dodo-font-semibold);
+    color: var(--dodo-text-secondary);
+    font-size: var(--dodo-text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: var(--dodo-space-3) var(--dodo-space-4);
+}
+
+.dodo-card table.wp-list-table tbody tr {
+    transition: background var(--dodo-transition-fast);
+}
+
+.dodo-card table.wp-list-table tbody tr:hover {
+    background: var(--dodo-bg-subtle);
+}
+
+.dodo-card table.wp-list-table tbody td {
+    padding: var(--dodo-space-3) var(--dodo-space-4);
+    border-bottom: 1px solid var(--dodo-border-subtle);
+}
+
+/* ============================================
+   ANIMATIONS - Subtle & Smooth
+   ============================================ */
+@keyframes dodoSpinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dodoSkeleton {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+@keyframes dodoFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes dodoSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes dodoScaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animation utilities */
+.dodo-fade-in {
+    animation: dodoFadeIn var(--dodo-transition-slow) ease-out;
+}
+
+.dodo-slide-in {
+    animation: dodoSlideIn var(--dodo-transition-slow) ease-out;
+}
+
+.dodo-scale-in {
+    animation: dodoScaleIn var(--dodo-transition-slow) ease-out;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1200px) {
+    /* Blog Create Layout - Single Column */
+    .blog-create-layout {
+        grid-template-columns: 1fr;
+        row-gap: 24px;
+        column-gap: 0;
+    }
+    
+    .blog-form-card {
+        grid-column: 1;
+        grid-row: 1;
+        width: 100%;
+    }
+    
+    .blog-info-sidebar {
+        grid-column: 1;
+        grid-row: 2;
+        position: static;
+        width: 100%;
+        max-width: none;
+        justify-self: stretch;
+        margin-left: 0;
+    }
+    
+    /* Legacy layout */
+    .dodo-layout-container {
+        grid-template-columns: 1fr 320px;
+        gap: 32px;
+    }
+    
+    .dodo-sidebar-card {
+        padding: 20px;
+    }
+    
+    .dodo-stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+}
+
+@media (max-width: 960px) {
+    /* Legacy layout */
+    .dodo-layout-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    
+    .dodo-main-content {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    
+    .dodo-sidebar {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        grid-column: 1;
+        grid-row: 2;
+    }
+    
+    .dodo-sidebar-card {
+        max-width: 100%;
+    }
+    
+    .dodo-page-title {
+        font-size: var(--dodo-text-2xl) !important;
+    }
+    
+    .dodo-form-row,
+    .dodo-form-row-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 782px) {
+    .dodo-page-header {
+        padding: var(--dodo-space-8) 0;
+    }
+    
+    .dodo-page-header-content {
+        padding: 0 var(--dodo-space-4);
+    }
+    
+    .dodo-admin-container {
+        padding: 0 var(--dodo-space-4);
+    }
+    
+    .dodo-page-title {
+        font-size: var(--dodo-text-xl) !important;
+    }
+    
+    .dodo-stats-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--dodo-space-3);
+    }
+    
+    .dodo-sidebar {
+        grid-template-columns: 1fr;
+    }
+    
+    .dodo-card {
+        padding: var(--dodo-space-5);
+    }
+}
+
+@media (max-width: 480px) {
+    .dodo-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dodo-btn-primary,
+    .dodo-submit-btn,
+    .dodo-btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .dodo-btn-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .dodo-btn-group > * {
+        width: 100%;
+    }
+    
+    .dodo-form-actions {
+        flex-direction: column;
+    }
+    
+    .dodo-form-actions > * {
+        width: 100%;
+    }
+}
+
+/* Print styles */
+@media print {
+    .dodo-sidebar,
+    .dodo-btn-primary,
+    .dodo-btn-secondary,
+    .dodo-form-actions {
+        display: none;
+    }
+    
+    .dodo-card {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+}
+
+
+/* ============================================
+   ADMIN NOTICE CLEANUP - DODO PAGES ONLY
+   Hide third-party plugin/theme notices
+   ============================================ */
+
+/* Target only DODO admin pages */
+body[class*="toplevel_page_dodo-ai-seo"] .notice:not(.dodo-notice):not(.notice-error):not(.error),
+body[class*="_page_dodo-ai-seo"] .notice:not(.dodo-notice):not(.notice-error):not(.error) {
+    display: none !important;
+}
+
+body[class*="toplevel_page_dodo-ai-seo"] .updated:not(.dodo-notice),
+body[class*="_page_dodo-ai-seo"] .updated:not(.dodo-notice) {
+    display: none !important;
+}
+
+/* Hide specific noisy notices on DODO pages */
+body[class*="toplevel_page_dodo-ai-seo"] .woocommerce-message,
+body[class*="_page_dodo-ai-seo"] .woocommerce-message,
+body[class*="toplevel_page_dodo-ai-seo"] .wc-admin-notice,
+body[class*="_page_dodo-ai-seo"] .wc-admin-notice,
+body[class*="toplevel_page_dodo-ai-seo"] [data-dismissible*="-nag"],
+body[class*="_page_dodo-ai-seo"] [data-dismissible*="-nag"],
+body[class*="toplevel_page_dodo-ai-seo"] .notice[class*="promo"],
+body[class*="_page_dodo-ai-seo"] .notice[class*="promo"],
+body[class*="toplevel_page_dodo-ai-seo"] .notice[class*="review"],
+body[class*="_page_dodo-ai-seo"] .notice[class*="review"],
+body[class*="toplevel_page_dodo-ai-seo"] .notice[class*="upgrade"],
+body[class*="_page_dodo-ai-seo"] .notice[class*="upgrade"] {
+    display: none !important;
+}
+
+/* Ensure DODO notices are visible */
+.dodo-notice {
+    display: block !important;
+    margin: 15px 0;
+    padding: 12px 20px;
+    border-left: 4px solid;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.dodo-notice.notice-success {
+    border-left-color: #46b450;
+}
+
+.dodo-notice.notice-warning {
+    border-left-color: #ffb900;
+}
+
+.dodo-notice.notice-error {
+    border-left-color: #dc3232;
+}
+
+.dodo-notice.notice-info {
+    border-left-color: #2271b1;
+}
+
+/* Ensure WordPress core critical notices are still visible */
+body[class*="toplevel_page_dodo-ai-seo"] .notice-error,
+body[class*="_page_dodo-ai-seo"] .notice-error,
+body[class*="toplevel_page_dodo-ai-seo"] .error,
+body[class*="_page_dodo-ai-seo"] .error {
+    display: block !important;
+}

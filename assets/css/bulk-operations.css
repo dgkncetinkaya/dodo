@@ -1,0 +1,278 @@
+/**
+ * Bulk Operations Styles
+ * Aligned with global design system
+ * 
+ * @package DODO_AI_SEO
+ * @since 2.0.0 (Sprint 4.5 - Redesigned)
+ */
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.dodo-bulk-operations {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   BULK GRID
+   ============================================ */
+.dodo-bulk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: var(--dodo-space-5);
+    margin-top: var(--dodo-space-8);
+}
+
+.bulk-operation-card {
+    background: var(--dodo-bg-card);
+    border: 1px solid var(--dodo-border-default);
+    border-radius: var(--dodo-radius-xl);
+    padding: var(--dodo-space-6);
+    box-shadow: var(--dodo-shadow-xs);
+    transition: all var(--dodo-transition-base);
+}
+
+.bulk-operation-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--dodo-shadow-md);
+    border-color: var(--dodo-border-strong);
+}
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: var(--dodo-space-4);
+    line-height: 1;
+}
+
+.bulk-operation-card h3 {
+    font-size: var(--dodo-text-lg);
+    font-weight: var(--dodo-font-semibold);
+    color: var(--dodo-text-primary);
+    margin: 0 0 var(--dodo-space-3) 0;
+    letter-spacing: -0.01em;
+}
+
+.bulk-operation-card p {
+    color: var(--dodo-text-secondary);
+    margin: 0 0 var(--dodo-space-5) 0;
+    line-height: var(--dodo-leading-relaxed);
+    font-size: var(--dodo-text-sm);
+}
+
+/* ============================================
+   OPERATION FORM
+   ============================================ */
+.operation-form {
+    margin-top: var(--dodo-space-5);
+}
+
+.form-group {
+    margin-bottom: var(--dodo-space-5);
+}
+
+.form-group label {
+    display: block;
+    font-weight: var(--dodo-font-medium);
+    color: var(--dodo-text-primary);
+    margin-bottom: var(--dodo-space-2);
+    font-size: var(--dodo-text-sm);
+}
+
+.dodo-select {
+    width: 100%;
+    padding: 0 var(--dodo-space-3);
+    height: 40px;
+    border: 1px solid var(--dodo-border-default);
+    border-radius: var(--dodo-radius-lg);
+    font-size: var(--dodo-text-base) !important;
+    font-family: var(--dodo-font-sans);
+    color: #111827 !important;
+    background: var(--dodo-bg-card);
+    transition: all var(--dodo-transition-base);
+    box-shadow: var(--dodo-shadow-xs);
+    line-height: 1.5 !important;
+}
+
+.dodo-select option {
+    color: #111827 !important;
+    background: #ffffff;
+    padding: 8px;
+    font-size: var(--dodo-text-base) !important;
+}
+
+.dodo-select:hover {
+    border-color: var(--dodo-border-strong);
+}
+
+.dodo-select:focus {
+    outline: none;
+    border-color: var(--dodo-accent-500);
+    box-shadow: 0 0 0 3px var(--dodo-accent-100);
+}
+
+.form-help {
+    font-size: var(--dodo-text-xs);
+    color: var(--dodo-text-tertiary);
+    margin-top: var(--dodo-space-1);
+    line-height: var(--dodo-leading-relaxed);
+}
+
+/* ============================================
+   PROGRESS MODAL
+   ============================================ */
+.progress-info {
+    margin-bottom: var(--dodo-space-6);
+}
+
+.progress-stats {
+    display: flex;
+    gap: var(--dodo-space-4);
+    margin-bottom: var(--dodo-space-6);
+}
+
+.stat-item {
+    flex: 1;
+    text-align: center;
+    padding: var(--dodo-space-4);
+    background: var(--dodo-bg-surface);
+    border-radius: var(--dodo-radius-lg);
+    border: 1px solid var(--dodo-border-subtle);
+}
+
+.stat-label {
+    display: block;
+    font-size: var(--dodo-text-xs);
+    color: var(--dodo-text-tertiary);
+    margin-bottom: var(--dodo-space-1);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: var(--dodo-font-medium);
+}
+
+.stat-value {
+    display: block;
+    font-size: var(--dodo-text-2xl);
+    font-weight: var(--dodo-font-bold);
+    color: var(--dodo-text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.progress-bar-wrapper {
+    position: relative;
+    width: 100%;
+    height: 8px;
+    background: var(--dodo-bg-elevated);
+    border-radius: var(--dodo-radius-full);
+    overflow: hidden;
+    margin-bottom: var(--dodo-space-4);
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--dodo-accent-500);
+    transition: width var(--dodo-transition-slow);
+    border-radius: var(--dodo-radius-full);
+}
+
+.progress-text {
+    display: block;
+    text-align: center;
+    font-size: var(--dodo-text-sm);
+    font-weight: var(--dodo-font-semibold);
+    color: var(--dodo-text-secondary);
+    margin-top: var(--dodo-space-2);
+    font-variant-numeric: tabular-nums;
+}
+
+.progress-estimate,
+.progress-cost {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--dodo-space-3) var(--dodo-space-4);
+    background: var(--dodo-bg-surface);
+    border-radius: var(--dodo-radius-lg);
+    margin-bottom: var(--dodo-space-2);
+    font-size: var(--dodo-text-sm);
+    border: 1px solid var(--dodo-border-subtle);
+}
+
+.progress-estimate span:first-child,
+.progress-cost span:first-child {
+    color: var(--dodo-text-tertiary);
+    font-weight: var(--dodo-font-medium);
+}
+
+.progress-estimate span:last-child,
+.progress-cost span:last-child {
+    color: var(--dodo-text-primary);
+    font-weight: var(--dodo-font-semibold);
+}
+
+.progress-log {
+    max-height: 300px;
+    overflow-y: auto;
+    background: var(--dodo-bg-surface);
+    border-radius: var(--dodo-radius-lg);
+    padding: var(--dodo-space-4);
+    margin-top: var(--dodo-space-6);
+    border: 1px solid var(--dodo-border-default);
+}
+
+.log-entry {
+    padding: var(--dodo-space-2) var(--dodo-space-3);
+    margin-bottom: var(--dodo-space-2);
+    border-radius: var(--dodo-radius-md);
+    font-size: var(--dodo-text-xs);
+    font-family: var(--dodo-font-mono);
+    line-height: var(--dodo-leading-relaxed);
+}
+
+.log-entry:last-child {
+    margin-bottom: 0;
+}
+
+.log-entry.success {
+    background: var(--dodo-success-bg);
+    color: var(--dodo-success);
+    border: 1px solid #86efac;
+}
+
+.log-entry.error {
+    background: var(--dodo-error-bg);
+    color: var(--dodo-error);
+    border: 1px solid #fca5a5;
+}
+
+.log-entry.warning {
+    background: var(--dodo-warning-bg);
+    color: var(--dodo-warning);
+    border: 1px solid #fcd34d;
+}
+
+.log-entry.info {
+    background: var(--dodo-info-bg);
+    color: var(--dodo-accent-700);
+    border: 1px solid #93c5fd;
+}
+
+.modal-actions {
+    margin-top: var(--dodo-space-6);
+    text-align: center;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 960px) {
+    .dodo-bulk-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .progress-stats {
+        flex-direction: column;
+        gap: var(--dodo-space-3);
+    }
+}

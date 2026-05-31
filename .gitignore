@@ -1,0 +1,44 @@
+# WordPress
+.DS_Store
+Thumbs.db
+__MACOSX/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+error_log
+debug.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+*.backup
+
+# Node modules (eğer gelecekte kullanılırsa)
+node_modules/
+package-lock.json
+
+# Composer (eğer gelecekte kullanılırsa)
+vendor/
+composer.lock
+
+# Environment
+.env
+.env.local
+
+# Build files
+dist/
+build/
+
+# Development files (exclude from production)
+_dev-archive/
+bulk_harden.py
+bulk_harden_ajax.py
+*.disabled

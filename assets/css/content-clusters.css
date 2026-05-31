@@ -1,0 +1,594 @@
+/**
+ * Content Clusters Styles
+ * Topical Authority Dashboard - SurferSEO / Frase inspired
+ * 
+ * @package DODO_AI_SEO
+ * @since 2.2.0
+ */
+
+/* ============================================
+   LAYOUT - Topical Authority Dashboard
+   ============================================ */
+.dodo-clusters-layout {
+    display: grid;
+    grid-template-columns: minmax(760px, 1fr) 360px;
+    gap: 32px;
+    align-items: start;
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0 32px 48px;
+}
+
+.dodo-clusters-main {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.dodo-clusters-sidebar {
+    position: sticky;
+    top: 32px;
+    width: 360px;
+    justify-self: end;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+}
+
+.dodo-sidebar-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+/* ============================================
+   STATS GRID - Compact Dashboard Metrics
+   ============================================ */
+.dodo-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 0;
+}
+
+.dodo-stat-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 16px;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.dodo-stat-card:hover {
+    border-color: #d1d5db;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.dodo-stat-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+}
+
+.dodo-stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1;
+    margin-bottom: 0;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   SECTIONS - Compact Hierarchy
+   ============================================ */
+.dodo-section {
+    margin-bottom: 32px;
+}
+
+.dodo-section-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #111827;
+    letter-spacing: -0.02em;
+}
+
+/* ============================================
+   PILLAR PAGES - Compact Sidebar Cards
+   ============================================ */
+.dodo-pillar-list {
+    display: grid;
+    gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.dodo-pillar-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 14px;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.dodo-pillar-card:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.dodo-pillar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    gap: 12px;
+}
+
+.dodo-pillar-header h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    flex: 1;
+    line-height: 1.4;
+}
+
+.dodo-pillar-header h3 a {
+    color: #111827;
+    text-decoration: none;
+}
+
+.dodo-pillar-header h3 a:hover {
+    color: #2563eb;
+}
+
+.dodo-pillar-score {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #065f46;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-align: center;
+    min-width: 60px;
+    border: 1px solid #86efac;
+    flex-shrink: 0;
+}
+
+.dodo-score-value {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.dodo-score-label {
+    display: block;
+    font-size: 10px;
+    margin-top: 2px;
+    opacity: 0.8;
+}
+
+.dodo-pillar-meta {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 8px;
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.dodo-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dodo-pillar-reasons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.dodo-reason-badge {
+    background: #f3f4f6;
+    color: #4b5563;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 500;
+    border: 1px solid #e5e7eb;
+}
+
+/* ============================================
+   TOPIC CLUSTERS - Compact Grid Cards
+   ============================================ */
+.dodo-clusters-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 16px;
+}
+
+.dodo-cluster-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 16px;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.dodo-cluster-card:hover {
+    border-color: #3b82f6;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.dodo-cluster-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 10px;
+}
+
+.dodo-cluster-header h3 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+    text-transform: capitalize;
+    flex: 1;
+    line-height: 1.3;
+}
+
+.dodo-cluster-authority {
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-align: center;
+    min-width: 56px;
+    flex-shrink: 0;
+    border: 1px solid;
+}
+
+.dodo-authority-high {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #065f46;
+    border-color: #86efac;
+}
+
+.dodo-authority-medium {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #92400e;
+    border-color: #fcd34d;
+}
+
+.dodo-authority-low {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #991b1b;
+    border-color: #fca5a5;
+}
+
+.dodo-authority-value {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.dodo-authority-label {
+    display: block;
+    font-size: 10px;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+.dodo-cluster-stats {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f3f4f6;
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.dodo-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dodo-cluster-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dodo-cluster-post {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 10px;
+    background: #f9fafb;
+    border-radius: 6px;
+    font-size: 13px;
+    border: 1px solid #f3f4f6;
+    transition: all 0.15s ease;
+}
+
+.dodo-cluster-post:hover {
+    background: white;
+    border-color: #e5e7eb;
+}
+
+.dodo-cluster-post a {
+    color: #4b5563;
+    text-decoration: none;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dodo-cluster-post a:hover {
+    color: #2563eb;
+}
+
+.dodo-post-words {
+    color: #9ca3af;
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    margin-left: 8px;
+}
+
+.dodo-cluster-more {
+    text-align: center;
+    color: #6b7280;
+    font-size: 12px;
+    padding: 6px;
+    font-weight: 500;
+}
+
+/* ============================================
+   ORPHAN CONTENT - Compact Warning Cards
+   ============================================ */
+.dodo-orphan-list {
+    display: grid;
+    gap: 12px;
+}
+
+.dodo-orphan-card {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border: 1px solid #fcd34d;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    gap: 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.dodo-orphan-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    line-height: 1;
+    color: #92400e;
+}
+
+.dodo-orphan-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.dodo-orphan-content {
+    flex: 1;
+}
+
+.dodo-orphan-content h4 {
+    margin: 0 0 6px 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.dodo-orphan-content h4 a {
+    color: #92400e;
+    text-decoration: none;
+}
+
+.dodo-orphan-content h4 a:hover {
+    color: #b45309;
+}
+
+.dodo-orphan-content p {
+    margin: 0;
+    color: #92400e;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* ============================================
+   CANNIBALIZATION - Compact Error Cards
+   ============================================ */
+.dodo-cannibalization-list {
+    display: grid;
+    gap: 12px;
+}
+
+.dodo-cannibalization-card {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    border: 1px solid #fca5a5;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.dodo-cannibalization-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.dodo-cannibalization-header h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #991b1b;
+    flex: 1;
+}
+
+.dodo-severity-badge {
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.dodo-severity-high {
+    background: #dc2626;
+    color: white;
+}
+
+.dodo-cannibalization-card > p {
+    color: #991b1b;
+    margin: 0 0 12px 0;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.dodo-cannibalization-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dodo-cannibalization-post {
+    background: white;
+    padding: 10px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #f3f4f6;
+}
+
+.dodo-cannibalization-post a {
+    color: #991b1b;
+    text-decoration: none;
+    font-weight: 500;
+    flex: 1;
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dodo-cannibalization-post a:hover {
+    color: #dc2626;
+}
+
+.dodo-keyword-badge {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 500;
+    border: 1px solid #fcd34d;
+    white-space: nowrap;
+}
+
+/* ============================================
+   RESPONSIVE - Topical Authority Mobile
+   ============================================ */
+@media (max-width: 1200px) {
+    .dodo-clusters-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 0 24px 40px;
+    }
+    
+    .dodo-clusters-sidebar {
+        position: static;
+        width: 100%;
+        justify-self: start;
+        order: -1;
+        max-height: none;
+    }
+    
+    .dodo-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .dodo-pillar-list {
+        max-height: none;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 960px) {
+    .dodo-clusters-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .dodo-pillar-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .dodo-clusters-layout {
+        padding: 0 16px 32px;
+        gap: 20px;
+    }
+    
+    .dodo-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .dodo-stat-card {
+        padding: 14px;
+    }
+    
+    .dodo-stat-value {
+        font-size: 24px;
+    }
+    
+    .dodo-pillar-header,
+    .dodo-cluster-header,
+    .dodo-cannibalization-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .dodo-pillar-score,
+    .dodo-cluster-authority {
+        align-self: flex-end;
+    }
+    
+    .dodo-orphan-card {
+        flex-direction: column;
+    }
+    
+    .dodo-cluster-post a {
+        white-space: normal;
+    }
+}

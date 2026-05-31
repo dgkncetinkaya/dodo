@@ -1,0 +1,62 @@
+/**
+ * DODO AI SEO - Premium Sidebar Navigation
+ * Scoped to DODO AI SEO menu only - does not affect other WordPress menus
+ * 
+ * @package DODO_AI_SEO
+ * @since 2.1.0 (Sprint 4.6 Phase 2)
+ */
+
+/* ============================================
+   DODO AI SEO MENU ONLY - Scoped Styles
+   ============================================ */
+
+/* DODO AI SEO main menu item */
+#adminmenu .toplevel_page_dodo-ai-seo {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#adminmenu .toplevel_page_dodo-ai-seo > a {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* DODO AI SEO submenu */
+#adminmenu .toplevel_page_dodo-ai-seo .wp-submenu {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#adminmenu .toplevel_page_dodo-ai-seo .wp-submenu li {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#adminmenu .toplevel_page_dodo-ai-seo .wp-submenu a {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+    line-height: 1.3;
+    word-wrap: break-word;
+}
+
+/* ============================================
+   WORDPRESS ADMIN BAR INTEGRATION
+   ============================================ */
+#wpadminbar {
+    background: var(--dodo-bg-surface);
+    border-bottom: 1px solid var(--dodo-border-default);
+}
+
+#wpadminbar .ab-item {
+    color: var(--dodo-text-secondary);
+    transition: all var(--dodo-transition-base);
+}
+
+#wpadminbar .ab-item:hover {
+    background: var(--dodo-bg-hover);
+    color: var(--dodo-text-primary);
+}

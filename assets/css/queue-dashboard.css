@@ -1,0 +1,600 @@
+/**
+ * Queue Dashboard Styles - Dark Premium
+ * Aligned with global dark design system
+ *
+ * @package DODO_AI_SEO
+ * @since 2.0.0 (Sprint 4.6 - Dark Theme)
+ */
+
+/* ============================================
+   FILTERS
+   ============================================ */
+.dodo-queue-filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--dodo-space-4);
+    padding: var(--dodo-space-5) var(--dodo-space-6);
+    background: var(--dodo-bg-surface);
+    border-bottom: 1px solid var(--dodo-border-default);
+}
+
+/* ============================================
+   TABLE
+   ============================================ */
+.dodo-queue-table-wrapper {
+    background: var(--dodo-bg-card);
+    border-radius: var(--dodo-radius-xl);
+    overflow: hidden;
+    border: 1px solid var(--dodo-border-default);
+}
+
+.dodo-queue-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dodo-queue-table thead {
+    background: var(--dodo-bg-surface);
+    border-bottom: 1px solid var(--dodo-border-default);
+}
+
+.dodo-queue-table th {
+    padding: var(--dodo-space-3) var(--dodo-space-4);
+    text-align: left;
+    font-weight: var(--dodo-font-medium);
+    font-size: var(--dodo-text-xs);
+    color: var(--dodo-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+}
+
+.dodo-queue-table td {
+    padding: var(--dodo-space-3) var(--dodo-space-4);
+    border-bottom: 1px solid var(--dodo-border-subtle);
+    font-size: var(--dodo-text-sm);
+    color: var(--dodo-text-primary);
+    vertical-align: middle;
+}
+
+.dodo-queue-table tbody tr {
+    transition: background-color var(--dodo-transition-fast);
+}
+
+.dodo-queue-table tbody tr:hover {
+    background: var(--dodo-bg-hover);
+}
+
+.dodo-queue-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+.job-type-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px var(--dodo-space-2);
+    border-radius: var(--dodo-radius-md);
+    font-size: var(--dodo-text-xs);
+    font-weight: var(--dodo-font-medium);
+    background: var(--dodo-bg-elevated);
+    color: var(--dodo-text-secondary);
+    border: 1px solid var(--dodo-border-default);
+    white-space: nowrap;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--dodo-space-1);
+    padding: 2px var(--dodo-space-2);
+    border-radius: var(--dodo-radius-full);
+    font-size: var(--dodo-text-xs);
+    font-weight: var(--dodo-font-medium);
+    white-space: nowrap;
+}
+
+.status-pending {
+    background: var(--dodo-warning-bg);
+    color: var(--dodo-warning);
+}
+
+.status-processing {
+    background: var(--dodo-info-bg);
+    color: var(--dodo-info);
+}
+
+.status-completed {
+    background: var(--dodo-success-bg);
+    color: var(--dodo-success);
+}
+
+.status-failed {
+    background: var(--dodo-error-bg);
+    color: var(--dodo-error);
+}
+
+.status-cancelled {
+    background: var(--dodo-bg-elevated);
+    color: var(--dodo-text-tertiary);
+}
+
+/* Status dot indicator */
+.status-badge::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: var(--dodo-radius-full);
+    background: currentColor;
+    flex-shrink: 0;
+}
+
+.priority-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 28px;
+    padding: 2px var(--dodo-space-2);
+    border-radius: var(--dodo-radius-sm);
+    font-size: var(--dodo-text-xs);
+    font-weight: var(--dodo-font-semibold);
+    font-variant-numeric: tabular-nums;
+}
+
+.priority-1 {
+    background: var(--dodo-error-bg);
+    color: var(--dodo-error);
+}
+
+.priority-5 {
+    background: var(--dodo-warning-bg);
+    color: var(--dodo-warning);
+}
+
+.priority-10 {
+    background: var(--dodo-info-bg);
+    color: var(--dodo-info);
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+.progress-bar-wrapper {
+    position: relative;
+    width: 100%;
+    min-width: 80px;
+    height: 6px;
+    background: var(--dodo-bg-elevated);
+    border-radius: var(--dodo-radius-full);
+    overflow: visible;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--dodo-primary);
+    transition: width var(--dodo-transition-slow);
+    border-radius: var(--dodo-radius-full);
+}
+
+.progress-text {
+    display: block;
+    margin-top: var(--dodo-space-1);
+    font-size: var(--dodo-text-xs);
+    font-weight: var(--dodo-font-medium);
+    color: var(--dodo-text-tertiary);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   ACTION BUTTONS
+   ============================================ */
+.job-actions {
+    display: flex;
+    gap: var(--dodo-space-1);
+    align-items: center;
+}
+
+.action-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--dodo-radius-md);
+    border: 1px solid var(--dodo-border-default);
+    background: var(--dodo-bg-elevated);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--dodo-transition-fast);
+    color: var(--dodo-text-tertiary);
+    flex-shrink: 0;
+}
+
+.action-btn:hover {
+    background: var(--dodo-bg-hover);
+    border-color: var(--dodo-border-strong);
+    color: var(--dodo-text-primary);
+}
+
+.action-btn:active {
+    transform: scale(0.93);
+}
+
+/* SVG icons inside action buttons */
+.action-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+}
+
+/* ============================================
+   LOADING & EMPTY STATES
+   ============================================ */
+.loading-state {
+    text-align: center;
+    padding: var(--dodo-space-16) var(--dodo-space-6);
+}
+
+.loading-state p {
+    color: var(--dodo-text-tertiary);
+    font-size: var(--dodo-text-sm);
+    margin-top: var(--dodo-space-4);
+}
+
+.empty-row td {
+    text-align: center;
+    padding: var(--dodo-space-16) var(--dodo-space-6);
+    color: var(--dodo-text-tertiary);
+    font-size: var(--dodo-text-sm);
+}
+
+.error-row td {
+    text-align: center;
+    padding: var(--dodo-space-8) var(--dodo-space-6);
+    color: #991b1b;
+    font-size: var(--dodo-text-sm);
+    background: var(--dodo-error-bg);
+}
+
+/* ============================================
+   MODAL
+   ============================================ */
+.dodo-modal {
+    position: fixed;
+    inset: 0;
+    z-index: var(--dodo-z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dodo-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--dodo-bg-overlay);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.dodo-modal-content {
+    position: relative;
+    background: var(--dodo-bg-card);
+    border-radius: var(--dodo-radius-xl);
+    max-width: 760px;
+    width: 90%;
+    max-height: 82vh;
+    overflow: auto;
+    box-shadow: var(--dodo-shadow-2xl);
+    border: 1px solid var(--dodo-border-default);
+    animation: queueModalIn var(--dodo-transition-slow) cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes queueModalIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.dodo-modal-header {
+    padding: var(--dodo-space-5) var(--dodo-space-6);
+    border-bottom: 1px solid var(--dodo-border-default);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--dodo-bg-surface);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.dodo-modal-header h2 {
+    margin: 0;
+    font-size: var(--dodo-text-lg);
+    font-weight: var(--dodo-font-semibold);
+    color: var(--dodo-text-primary);
+    letter-spacing: -0.01em;
+}
+
+.dodo-modal-close {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--dodo-radius-md);
+    border: 1px solid var(--dodo-border-default);
+    background: var(--dodo-bg-elevated);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dodo-text-tertiary);
+    transition: all var(--dodo-transition-fast);
+    font-size: 18px;
+    line-height: 1;
+}
+
+.dodo-modal-close:hover {
+    background: var(--dodo-bg-hover);
+    color: var(--dodo-text-primary);
+    border-color: var(--dodo-border-strong);
+}
+
+.dodo-modal-body {
+    padding: var(--dodo-space-6);
+}
+
+/* ============================================
+   JOB DETAIL
+   ============================================ */
+.job-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--dodo-space-4);
+    margin-bottom: var(--dodo-space-6);
+    padding: var(--dodo-space-5);
+    background: var(--dodo-bg-surface);
+    border-radius: var(--dodo-radius-lg);
+    border: 1px solid var(--dodo-border-subtle);
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--dodo-space-1);
+}
+
+.detail-item label {
+    font-size: var(--dodo-text-xs);
+    font-weight: var(--dodo-font-medium);
+    color: var(--dodo-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.detail-item span {
+    font-size: var(--dodo-text-sm);
+    color: var(--dodo-text-primary);
+    font-weight: var(--dodo-font-medium);
+}
+
+.detail-section {
+    margin-top: var(--dodo-space-5);
+    padding-top: var(--dodo-space-5);
+    border-top: 1px solid var(--dodo-border-subtle);
+}
+
+.detail-section h3 {
+    font-size: var(--dodo-text-sm);
+    font-weight: var(--dodo-font-semibold);
+    color: var(--dodo-text-primary);
+    margin: 0 0 var(--dodo-space-3) 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.detail-section pre {
+    background: var(--dodo-bg-surface);
+    padding: var(--dodo-space-4);
+    border-radius: var(--dodo-radius-lg);
+    overflow-x: auto;
+    font-size: var(--dodo-text-xs);
+    font-family: var(--dodo-font-mono);
+    line-height: var(--dodo-leading-relaxed);
+    border: 1px solid var(--dodo-border-default);
+    color: var(--dodo-text-secondary);
+    margin: 0;
+}
+
+.detail-section.error {
+    background: var(--dodo-error-bg);
+    padding: var(--dodo-space-4);
+    border-radius: var(--dodo-radius-lg);
+    border: 1px solid var(--dodo-error-border);
+}
+
+.detail-section.error h3 {
+    color: var(--dodo-error);
+}
+
+.detail-section.error p {
+    color: var(--dodo-error);
+    margin: 0;
+    font-size: var(--dodo-text-sm);
+}
+
+/* ============================================
+   TOAST (queue-specific, bottom-right)
+   ============================================ */
+.dodo-queue-toast {
+    position: fixed;
+    bottom: var(--dodo-space-6);
+    right: var(--dodo-space-6);
+    padding: var(--dodo-space-3) var(--dodo-space-5);
+    border-radius: var(--dodo-radius-lg);
+    font-size: var(--dodo-text-sm);
+    font-weight: var(--dodo-font-medium);
+    box-shadow: var(--dodo-shadow-xl);
+    z-index: var(--dodo-z-toast);
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: var(--dodo-space-2);
+    animation: queueToastIn var(--dodo-transition-base);
+}
+
+@keyframes queueToastIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.dodo-queue-toast.success {
+    background: var(--dodo-bg-card);
+    color: var(--dodo-success);
+    border-color: var(--dodo-success-border);
+    box-shadow: var(--dodo-shadow-xl), inset 3px 0 0 var(--dodo-success);
+}
+
+.dodo-queue-toast.error {
+    background: var(--dodo-bg-card);
+    color: var(--dodo-error);
+    border-color: var(--dodo-error-border);
+    box-shadow: var(--dodo-shadow-xl), inset 3px 0 0 var(--dodo-error);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 960px) {
+    .dodo-queue-filters {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .dodo-queue-table th,
+    .dodo-queue-table td {
+        padding: var(--dodo-space-2) var(--dodo-space-3);
+    }
+
+    /* Hide less critical columns on tablet */
+    .dodo-queue-table .col-priority,
+    .dodo-queue-table .col-retries {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .dodo-queue-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .dodo-modal-content {
+        width: 96%;
+        max-height: 90vh;
+    }
+
+    .job-detail-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Hide more columns on mobile */
+    .dodo-queue-table .col-created {
+        display: none;
+    }
+}
+
+/* ============================================
+   SPRINT 5: PUBLISHING PIPELINE WIDGET
+   ============================================ */
+
+.dodo-pipeline-widget {
+    margin-bottom: var(--dodo-space-6);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.dodo-pipeline-widget .dodo-card-title {
+    color: white;
+}
+
+.dodo-pipeline-status {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.dodo-pipeline-status.active {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+}
+
+.dodo-pipeline-status.inactive {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.dodo-pipeline-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--dodo-space-4);
+    margin-bottom: var(--dodo-space-4);
+}
+
+.dodo-pipeline-stat {
+    text-align: center;
+    padding: var(--dodo-space-3);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--dodo-radius-md);
+}
+
+.dodo-pipeline-stat-label {
+    font-size: 11px;
+    opacity: 0.8;
+    margin-bottom: var(--dodo-space-2);
+}
+
+.dodo-pipeline-stat-value {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.dodo-pipeline-next-run {
+    display: flex;
+    align-items: center;
+    gap: var(--dodo-space-2);
+    padding: var(--dodo-space-3);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--dodo-radius-md);
+    margin-bottom: var(--dodo-space-4);
+    font-size: 13px;
+}
+
+.dodo-pipeline-actions {
+    display: flex;
+    gap: var(--dodo-space-3);
+}
+
+.dodo-pipeline-widget .dodo-btn-secondary {
+    background: white;
+    color: #667eea;
+    border: none;
+}
+
+.dodo-pipeline-widget .dodo-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.9);
+}

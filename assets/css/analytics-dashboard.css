@@ -1,0 +1,251 @@
+/**
+ * Analytics Dashboard Styles
+ * Aligned with global design system (admin-global.css)
+ * 
+ * @package DODO_AI_SEO
+ * @since 2.0.0 (Sprint 4.5 - Redesigned)
+ */
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+.dodo-analytics-container {
+    /* Container managed by global admin-container */
+}
+
+.dodo-btn-primary svg {
+    margin-right: var(--dodo-space-2);
+}
+
+/* ============================================
+   SUMMARY CARDS
+   ============================================ */
+.dodo-analytics-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--dodo-space-4);
+    margin-bottom: var(--dodo-space-8);
+}
+
+.dodo-summary-card {
+    background: var(--dodo-bg-card);
+    border-radius: var(--dodo-radius-lg);
+    padding: var(--dodo-space-5);
+    display: flex;
+    align-items: center;
+    gap: var(--dodo-space-4);
+    box-shadow: var(--dodo-shadow-xs);
+    border: 1px solid var(--dodo-border-default);
+    transition: all var(--dodo-transition-base);
+}
+
+.dodo-summary-card:hover {
+    box-shadow: var(--dodo-shadow-sm);
+    border-color: var(--dodo-border-strong);
+}
+
+.dodo-summary-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--dodo-radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: var(--dodo-bg-surface);
+    color: var(--dodo-text-tertiary);
+    border: 1px solid var(--dodo-border-subtle);
+}
+
+.dodo-summary-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.dodo-summary-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.dodo-summary-label {
+    font-size: var(--dodo-text-xs);
+    color: var(--dodo-text-tertiary);
+    font-weight: var(--dodo-font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: var(--dodo-space-1);
+}
+
+.dodo-summary-value {
+    font-size: var(--dodo-text-3xl);
+    font-weight: var(--dodo-font-semibold);
+    color: var(--dodo-text-primary);
+    line-height: var(--dodo-leading-none);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ============================================
+   CHARTS
+   ============================================ */
+.dodo-analytics-charts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--dodo-space-6);
+}
+
+.dodo-chart-card {
+    background: var(--dodo-bg-card);
+    border-radius: var(--dodo-radius-xl);
+    padding: var(--dodo-space-6);
+    box-shadow: var(--dodo-shadow-xs);
+    border: 1px solid var(--dodo-border-default);
+}
+
+.dodo-chart-header {
+    margin-bottom: var(--dodo-space-5);
+    padding-bottom: var(--dodo-space-4);
+    border-bottom: 1px solid var(--dodo-border-subtle);
+}
+
+.dodo-chart-title {
+    font-size: var(--dodo-text-base);
+    font-weight: var(--dodo-font-semibold);
+    color: var(--dodo-text-primary);
+    margin: 0;
+    letter-spacing: -0.01em;
+}
+
+.dodo-chart-body {
+    height: 280px;
+    position: relative;
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.dodo-empty-state {
+    background: var(--dodo-bg-card);
+    border-radius: var(--dodo-radius-xl);
+    padding: var(--dodo-space-16) var(--dodo-space-8);
+    text-align: center;
+    box-shadow: var(--dodo-shadow-xs);
+    border: 1px solid var(--dodo-border-default);
+    margin-top: var(--dodo-space-6);
+}
+
+.dodo-empty-state-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto var(--dodo-space-5);
+    color: var(--dodo-text-quaternary);
+}
+
+.dodo-empty-state-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.dodo-empty-state-title {
+    font-size: var(--dodo-text-lg);
+    font-weight: var(--dodo-font-semibold);
+    color: var(--dodo-text-primary);
+    margin: 0 0 var(--dodo-space-2) 0;
+}
+
+.dodo-empty-state-description {
+    font-size: var(--dodo-text-sm);
+    color: var(--dodo-text-secondary);
+    margin: 0;
+    line-height: var(--dodo-leading-relaxed);
+}
+
+/* ============================================
+   PAGE HEADER ACTIONS
+   ============================================ */
+.dodo-page-header-actions {
+    display: flex;
+    gap: var(--dodo-space-3);
+    align-items: center;
+}
+
+/* ============================================
+   PAGE HEADER ACTIONS
+   ============================================ */
+.dodo-page-header-actions {
+    display: flex;
+    gap: var(--dodo-space-3);
+    align-items: center;
+}
+
+/* ============================================
+   PRESET BUTTONS - Premium Style
+   ============================================ */
+.dodo-preset-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--dodo-space-2);
+    padding: var(--dodo-space-3) var(--dodo-space-4);
+    background: var(--dodo-bg-elevated);
+    border: 1px solid var(--dodo-border-default);
+    border-radius: var(--dodo-radius-lg);
+    font-size: var(--dodo-text-sm);
+    font-weight: var(--dodo-font-medium);
+    color: var(--dodo-text-secondary);
+    cursor: pointer;
+    transition: all var(--dodo-transition-base);
+    white-space: nowrap;
+}
+
+.dodo-preset-btn:hover {
+    background: var(--dodo-bg-hover);
+    border-color: var(--dodo-border-strong);
+    color: var(--dodo-text-primary);
+    transform: translateY(-1px);
+    box-shadow: var(--dodo-shadow-sm);
+}
+
+.dodo-preset-btn.active {
+    background: var(--dodo-primary-bg);
+    border-color: var(--dodo-primary);
+    color: var(--dodo-primary);
+}
+
+.dodo-preset-btn svg {
+    flex-shrink: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 960px) {
+    .dodo-analytics-summary {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .dodo-analytics-container {
+        padding: var(--dodo-space-5);
+    }
+    
+    .dodo-chart-body {
+        height: 240px;
+    }
+}
+
+@media (max-width: 640px) {
+    .dodo-analytics-summary {
+        grid-template-columns: 1fr;
+    }
+    
+    .dodo-analytics-container {
+        padding: var(--dodo-space-4);
+    }
+    
+    .dodo-summary-card {
+        flex-direction: row;
+    }
+    
+    .dodo-chart-body {
+        height: 200px;
+    }
+}
