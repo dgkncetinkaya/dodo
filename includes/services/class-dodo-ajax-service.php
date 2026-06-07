@@ -132,6 +132,7 @@ class DODO_AJAX_Service {
         add_action('wp_ajax_dodo_set_safety_settings', array(__CLASS__, 'ajax_set_safety_settings'));
         add_action('wp_ajax_dodo_emergency_freeze', array(__CLASS__, 'ajax_emergency_freeze'));
         add_action('wp_ajax_dodo_emergency_unfreeze', array(__CLASS__, 'ajax_emergency_unfreeze'));
+        add_action('wp_ajax_dodo_create_test_learning_event', array(__CLASS__, 'ajax_create_test_learning_event'));
     }
     
     /**

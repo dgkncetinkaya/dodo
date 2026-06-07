@@ -96,6 +96,9 @@ class DODO_Database_Migrator {
         
         // 8. AI Visibility Table
         self::create_ai_visibility_table($charset_collate);
+        
+        // 9. Analytics History Table
+        self::create_analytics_history_table($charset_collate);
     }
     
     /**
@@ -389,5 +392,37 @@ class DODO_Database_Migrator {
      */
     public static function needs_migration() {
         return self::get_version() < self::DB_VERSION;
+    }
+    
+    /**
+     * Create analytics_history table
+     */
+    private static function create_analytics_history_table($charset_collate) {
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'dodo_analytics_history';
+        
+        $sql = "CREATE TABLE {$table_name} (
+            id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            post_id BIGINT UNSIGNED NOT NULL,
+            health_score INT DEFAULT 0,
+            seo_score INT DEFAULT 0,
+            quality_score INT DEFAULT 0,
+            readability_score INT DEFAULT 0,
+            semantic_score INT DEFAULT 0,
+            ai_risk_score INT DEFAULT 0,
+            geo_score INT DEFAULT 0,
+            entity_coverage INT DEFAULT 0,
+            workflow_status VARCHAR(50) DEFAULT 'draft',
+            recorded_at DATE NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            KEY post_id (post_id),
+            KEY recorded_at (recorded_at),
+            KEY health_score (health_score),
+            UNIQUE KEY post_date (post_id, recorded_at)
+        ) {$charset_collate};";
+        
+        dbDelta($sql);
+        
+        error_log("[DODO Migrator] Created/updated table: {$table_name}");
     }
 }

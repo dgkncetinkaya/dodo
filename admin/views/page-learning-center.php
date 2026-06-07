@@ -37,6 +37,22 @@ $validation_insights = $validator->get_validation_insights();
         Sistem öğrenme analizleri ve adaptif zeka performansı
     </p>
     
+    <!-- Test Button for Development -->
+    <div style="margin: 20px 0; padding: 15px; background: #fff3cd; border: 1px solid #ffc107; border-radius: 8px;">
+        <h3 style="margin-top: 0; color: #856404;">🧪 Test & Debug</h3>
+        <p style="margin: 10px 0; color: #856404;">
+            Henüz öğrenme verisi yoksa test verileri oluşturabilirsiniz. Bu, sistemin nasıl çalıştığını görmek için kullanışlıdır.
+        </p>
+        <button type="button" id="dodo-create-test-events" class="button button-secondary">
+            <span class="dashicons dashicons-admin-tools"></span>
+            Test Öğrenme Verileri Oluştur
+        </button>
+        <button type="button" onclick="location.reload();" class="button button-secondary" style="margin-left: 10px;">
+            <span class="dashicons dashicons-update"></span>
+            Sayfayı Yenile
+        </button>
+    </div>
+    
     <!-- Summary Cards -->
     <div class="dodo-stats-grid">
         <div class="dodo-stat-card">
@@ -481,5 +497,50 @@ $validation_insights = $validator->get_validation_insights();
 .safety-stat span {
     font-size: 13px;
     color: #666;
+}
+</style>
+
+<script>
+jQuery(document).ready(function($) {
+    // Test learning events button
+    $('#dodo-create-test-events').on('click', function() {
+        var $btn = $(this);
+        var originalText = $btn.html();
+        
+        $btn.prop('disabled', true).html('<span class="dashicons dashicons-update spin"></span> Oluşturuluyor...');
+        
+        $.ajax({
+            url: ajaxurl,
+            type: 'POST',
+            data: {
+                action: 'dodo_create_test_learning_event',
+                nonce: '<?php echo wp_create_nonce('dodo_learning_nonce'); ?>'
+            },
+            success: function(response) {
+                if (response.success) {
+                    alert('✅ ' + response.data.message + '\n\nSayfayı yenileyerek sonuçları görebilirsiniz.');
+                    location.reload();
+                } else {
+                    alert('❌ Hata: ' + (response.data.message || 'Bilinmeyen hata'));
+                    $btn.prop('disabled', false).html(originalText);
+                }
+            },
+            error: function() {
+                alert('❌ AJAX hatası oluştu');
+                $btn.prop('disabled', false).html(originalText);
+            }
+        });
+    });
+});
+</script>
+
+<style>
+.dashicons.spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 </style>

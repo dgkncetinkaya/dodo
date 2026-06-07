@@ -254,7 +254,10 @@ class DODO_Generator {
             // 8. Start Impact Tracking (Phase 5)
             $this->start_impact_tracking($post_id, $validated_params, $this->strategy);
             
-            // 9. Başarı sonucu döndür
+            // 9. Record Learning Event
+            $this->record_learning_event($post_id, $validated_params, $this->strategy, $generated_content);
+            
+            // 10. Başarı sonucu döndür
             return array(
                 'success' => true,
                 'post_id' => $post_id,
@@ -2358,6 +2361,67 @@ class DODO_Generator {
             
         } catch (Exception $e) {
             error_log('[DODO Learning] Impact tracking failed: ' . $e->getMessage());
+        }
+    }
+    
+    /**
+     * Record learning event after blog generation
+     * 
+     * @param int $post_id Created post ID
+     * @param array $params Generation parameters
+     * @param array $strategy Used strategy
+     * @param array $generated_content Generated content
+     */
+    private function record_learning_event($post_id, $params, $strategy, $generated_content) {
+        global $wpdb;
+        
+        try {
+            $learning_table = $wpdb->prefix . 'dodo_learning_events';
+            
+            // Calculate word count
+            $content = $generated_content['content'] ?? '';
+            $word_count = count(preg_split('/\s+/u', trim(strip_tags($content)), -1, PREG_SPLIT_NO_EMPTY));
+            
+            // Prepare metadata
+            $metadata = array(
+                'focus_keyword' => $params['focus_keyword'] ?? '',
+                'length' => $params['length'] ?? 'medium',
+                'tone' => $params['tone'] ?? 'informative',
+                'content_intent' => $params['content_intent'] ?? 'informational',
+                'expertise_depth' => $params['expertise_depth'] ?? 'intermediate',
+                'geo_optimization' => $params['geo_optimization'] ?? 'moderate',
+                'ai_naturalness' => $params['ai_naturalness'] ?? 'human',
+                'word_count' => $word_count,
+                'brain_enhanced' => $this->brain_analysis !== null,
+                'learning_applied' => $strategy['learning_applied'] ?? false,
+            );
+            
+            // Insert learning event
+            $result = $wpdb->insert(
+                $learning_table,
+                array(
+                    'event_type' => 'blog_generation_completed',
+                    'post_id' => $post_id,
+                    'strategy_params' => json_encode($strategy),
+                    'outcome_score' => 0, // Will be updated by impact tracker
+                    'metadata' => json_encode($metadata),
+                    'recorded_at' => current_time('mysql'),
+                ),
+                array('%s', '%d', '%s', '%f', '%s', '%s')
+            );
+            
+            if ($result) {
+                error_log(sprintf(
+                    '[DODO Learning] Learning event recorded | Post ID: %d | Event: blog_generation_completed | Word Count: %d',
+                    $post_id,
+                    $word_count
+                ));
+            } else {
+                error_log('[DODO Learning] Failed to record learning event: ' . $wpdb->last_error);
+            }
+            
+        } catch (Exception $e) {
+            error_log('[DODO Learning] Learning event recording failed: ' . $e->getMessage());
         }
     }
 }
